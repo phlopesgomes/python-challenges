@@ -469,6 +469,19 @@ hello(name) # chamando a função
 
 ############################
 
+############################
+
+# pass = quando você quer definir uma função, mas ainda não tem código para colocar dentro dela, você pode usar "pass" para indicar que a função está vazia por enquanto;
+# Exemplo de função com "pass":
+def message(number):
+    pass # ainda não tem código para colocar aqui, mas a função está definida
+
+print("A função message foi definida, mas ainda não faz nada.")
+
+# Ficará assim no terminal:
+# A função message foi definida, mas ainda não faz nada.
+
+
 # parâmetros = valores que você passa para a função quando a chama
 def message(number): # "number" é um parâmetro da função "message"
     print("Digite um número:", number) 
@@ -480,7 +493,7 @@ message(1) # chamando a função com o argumento 1, ou seja, "number" vai valer 
 
 ############################
 
-# Outro exemplo de função com parâmetros
+# Outro exemplo de função com parâmetros:
 def message(number):
     print("Digite um número:", number)
  
@@ -521,7 +534,7 @@ message(1, 2) # dois argumentos
 
 ############################
 
-# Outro exemplo de função com mais de um parâmetro
+# Outro exemplo de função com mais de um parâmetro:
 def introduction(first_name, last_name):
     print("Olá meu nome é", first_name, last_name)
  
@@ -546,7 +559,8 @@ introduction(last_name = "Skywalker", first_name = "Luke")
 # Ficará assim no terminal:
 # Olá meu nome é James Bond
 # Olá meu nome é Luke Skywalker
-# dessa forma, a ordem dos argumentos não importa quando usamos os nomes dos parâmetros
+
+# Dessa forma, a ordem dos argumentos não importa quando usamos os nomes dos parâmetros
 
 ############################
 
@@ -571,7 +585,7 @@ def adding(a, b, c):
 
 ############################
 
-# Podemos definir valores padrão para os parâmetros da função
+# Podemos definir valores padrão para os parâmetros da função;
 def introduction(first_name, last_name="Smith"): # "last_name" tem valor padrão "Smith"
     print("Olá meu nome é", first_name, last_name)
 
@@ -582,7 +596,7 @@ introduction("John") # só passamos o argumento para "first_name"
 
 ############################
 
-# Outro exemplo de função com valor padrão
+# Outro exemplo de função com valor padrão:
 def introduction(first_name="Jane", last_name="Smith"): # ambos os parâmetros têm valores padrão
     print("Olá meu nome é", first_name, last_name)
 
@@ -594,6 +608,7 @@ introduction() # não passamos nenhum argumento, então ambos os parâmetros usa
 ############################
 
 # return = quando você quer que a função devolva um valor para quem a chamou, você usa o "return"
+# Exemplo de função com return:
 def happy_new_year(wishes = True):
     print("Três...")
     print("Duas...")
@@ -694,7 +709,7 @@ print(is_int("5")) # chama a função com o argumento "5", que é string, então
 
 ############################
 
-# funções com listas;
+# Funções com listas;
 def strange_list_fun(n):
 	strange_list = [] # cria uma lista vazia, depois adiciona números nela
 	
