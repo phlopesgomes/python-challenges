@@ -96,8 +96,8 @@ print (I)
 #  [0. 1. 0.]
 #  [0. 0. 1.]]
 
-## Dimensão da matriz identidade:
-I.shape # O 'shape' significa que a matriz identidade tem 3 linhas e 3 colunas, ou seja, é uma matriz quadrada de ordem 3.
+## Dimensão da matriz identidade realizada acima:
+I.shape # O 'shape' significa que a matriz identidade acima tem 3 linhas e 3 colunas, ou seja, é uma matriz quadrada de ordem 3.
 
 # A saída será:
 # (3, 3)
@@ -114,8 +114,8 @@ print (U)
 #  [0. 0. 1. 0.]
 #  [0. 0. 0. 1.]]
 
-## Dimensão da matriz identidade:
-U.shape # O 'shape' significa que a matriz identidade tem 4 linhas e 4 colunas, ou seja, é uma matriz quadrada de ordem 4.
+## Dimensão da matriz identidade realizada acima:
+U.shape # O 'shape' significa que a matriz identidade acima tem 4 linhas e 4 colunas, ou seja, é uma matriz quadrada de ordem 4.
 
 # A saída será:
 # (4, 4)
