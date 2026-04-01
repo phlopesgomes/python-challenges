@@ -1364,4 +1364,4 @@ print("Fibonacci:", fibonacci_iterativo(n))
 
 ## Para passarmos um código do Github (já conectado) a plataforma que estou gerando algoritmos, 
 ## utilizamos esta função no terminal: 
-git pull origin main 
+# git pull origin main 
