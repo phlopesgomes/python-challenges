@@ -1359,9 +1359,3 @@ print("Fibonacci:", fibonacci_iterativo(n))
 # Fibonacci: 8
 # Digite um número para calcular o Fibonacci: (digitei 6)
 # Fibonacci: 8
-
-#################################################################################################
-
-## Para passarmos um código do Github (já conectado) a plataforma que estou gerando algoritmos, 
-## utilizamos esta função no terminal: 
-# git pull origin main 
