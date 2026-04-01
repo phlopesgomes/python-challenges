@@ -18,7 +18,7 @@ matriz = np.array([[1, 2, 3], # array é uma função da biblioteca NumPy que cr
 
 print(matriz)
 
-# A saída será:
+## A saída será:
 # [[1 2 3]
 #  [4 5 6]]
 
@@ -32,7 +32,7 @@ matriz_linha = np.array([[1, 2, 3]]) # matriz linha
 
 print(matriz_linha)
 
-# A saída será:
+## A saída será:
 # [[1 2 3]]
 
 #################################################################################################
@@ -47,7 +47,7 @@ matriz_coluna = np.array([[1],
 
 print(matriz_coluna)
 
-# A saída será:
+## A saída será:
 # [[1]
 #  [2]
 #  [3]]
@@ -63,7 +63,7 @@ matriz_quadrada = np.array([[1, 2],
 
 print(matriz_quadrada)
 
-# A saída será:
+## A saída será:
 # [[1 2]
 #  [3 4]]
 
@@ -76,7 +76,7 @@ matriz_quadrada_2 = np.array([[1, 2, 3],
 
 print(matriz_quadrada_2)
 
-# A saída será:
+## A saída será:
 # [[1 2 3]
 #  [4 5 6]
 #  [7 8 9]]
@@ -91,7 +91,7 @@ print(matriz_quadrada_2)
 I = np.eye(3)
 print (I)
 
-# A saída será:
+## A saída será:
 # [[1. 0. 0.]
 #  [0. 1. 0.]
 #  [0. 0. 1.]]
@@ -99,7 +99,7 @@ print (I)
 ## Dimensão da matriz identidade realizada acima:
 I.shape # O 'shape' significa que a matriz identidade acima tem 3 linhas e 3 colunas, ou seja, é uma matriz quadrada de ordem 3.
 
-# A saída será:
+## A saída será:
 # (3, 3)
 
 #######################
@@ -108,7 +108,7 @@ I.shape # O 'shape' significa que a matriz identidade acima tem 3 linhas e 3 col
 U= np.eye(4)
 print (U)
 
-# A saída será:
+## A saída será:
 # [[1. 0. 0. 0.]
 #  [0. 1. 0. 0.]
 #  [0. 0. 1. 0.]
@@ -117,7 +117,7 @@ print (U)
 ## Dimensão da matriz identidade realizada acima:
 U.shape # O 'shape' significa que a matriz identidade acima tem 4 linhas e 4 colunas, ou seja, é uma matriz quadrada de ordem 4.
 
-# A saída será:
+## A saída será:
 # (4, 4)
 
 ##################################################################################################
@@ -130,7 +130,7 @@ matriz_nula = np.zeros((2, 3)) # matriz nula de 2 linhas e 3 colunas
 
 print(matriz_nula)
 
-# A saída será:
+## A saída será:
 # [[0. 0. 0.]
 #  [0. 0. 0.]]
 
@@ -139,7 +139,7 @@ matriz_nula_2 = np.zeros((3, 3)) # matriz nula de 3 linhas e 3 colunas
 
 print(matriz_nula_2)
 
-# A saída será:
+## A saída será:
 # [[0. 0. 0.]
 #  [0. 0. 0.]
 #  [0. 0. 0.]]
@@ -161,7 +161,7 @@ A = np.array([
 # O atributo .T realiza a transposição: a 1ª linha de A vira a 1ª coluna de A.T
 print(A.T)
 
-# A saída será:
+## A saída será:
 # [[1 4]
 #  [2 5]
 #  [3 6]]
@@ -188,7 +188,7 @@ print(B)
 print("\nMatriz Linha B.T (1x3): ", B_transposta.shape)
 print(B_transposta)
 
-# A saída será:
+## A saída será:
 # [[10 20 30]]
 
 ##################################################################################################
@@ -207,14 +207,14 @@ resultado = A @ B
 print("Resultado da Multiplicação A @ B:")
 print(resultado)
 
-# A saída será:
+## A saída será:
 # [[19 22]
 #  [43 50]]
 
 #######################
 
 ## Outro exemplo de multiplicação de matrizes:
-# Multiplicando uma matriz 2x2 por uma 2x1 (como no Exercício 65)
+# Multiplicando uma matriz 2x2 por uma 2x1
 M_a = np.array([[2, 1], 
                 [3, 2]])
 M_b = np.array([[2], 
@@ -223,7 +223,7 @@ M_b = np.array([[2],
 resultado_65 = M_a @ M_b
 print("65. Resultado da multiplicação: ", resultado_65)
 
-# A saída será:
+## A saída será:
 # [[5]
 #  [8]]
 
@@ -245,7 +245,7 @@ print("Matriz A elevada ao quadrado (A²):")
 print(A_quadrado)
 # O resultado nesse caso é o mesmo que fazer A @ A
 
-# A saída será:
+## A saída será:
 # [[ 7 10]
 #  [15 22]]
 
@@ -263,7 +263,7 @@ M_elevado_0 = np.linalg.matrix_power(M, 0)
 print("Matriz M elevada a 0 (Resulta na Identidade):")
 print(M_elevado_0)
 
-# A saída será:
+## A saída será:
 # [[1. 0.]
 #  [0. 1.]]
 
@@ -273,29 +273,51 @@ print(M_elevado_0)
 ## Uma matriz A tem inversa se for quadrada e seu determinante for diferente de zero.
 # Usamos np.linalg.inv() para calcular.
 
-A = np.array([[2, -5], 
-              [-1, 3]])
+A = np.array([[2,1],
+              [1,-1]])
 
-# Calculando a inversa (como no Exercício 58 da sua aula)
+# Conferimos o determinante da matriz:
+np.linalg.det(A)
+# Explicação melhor sobre determinante abaixo.
+
+## A saída será:
+# np.float64(-2.9999999999999996)
+
+# Agora calculando a inversa:
 A_inv = np.linalg.inv(A)
 
 print("Matriz Inversa de A:")
 print(A_inv)
 
-## Verificação: A @ A_inv deve resultar na Identidade
+## A saída será: 
+# Matriz Inversa de A:
+# [[ 0.33333333  0.33333333]
+#  [ 0.33333333 -0.66666667]]
+
+## Verificação o resultado: A @ A_inv deve resultar na Identidade
 print("\nVerificando (A @ A_inv):")
 print(np.round(A @ A_inv)) # Usamos round para limpar resíduos numéricos
+
+## A saída será:
+# Verificando (A @ A_inv):
+# [[1. 0.]
+#  [0. 1.]]
 
 #######################
 
 ## Outro exemplo de matriz inversa (3x3):
-# Calculando a inversa de uma matriz de ordem 3 (como no Exercício 66)
+# Calculando a inversa de uma matriz de ordem 3
 X66 = np.array([[1, 0, 2], 
                 [0, 3, 0], 
                 [2, 0, 1]])
 
 X66_inv = np.linalg.inv(X66)
 print("66. Inversa da Matriz 3x3: ", X66_inv)
+
+## A saída será:
+# 66. Inversa da Matriz 3x3:  [[-0.33333333  0.          0.66666667]
+# [ 0.          0.33333333  0.        ]
+# [ 0.66666667  0.         -0.33333333]]
 
 # Dica: Use np.round(X66 @ X66_inv) para confirmar que volta para a Identidade.
 
@@ -314,6 +336,10 @@ novo_vetor = transformacao @ vetor
 print("Vetor original:", vetor)
 print("Vetor transformado (esticado):", novo_vetor) # [2, 4]
 
+## A saída será: 
+# Vetor original: [1 2]
+# Vetor transformado (esticado): [2 4]
+
 #######################
 
 ## Outro exemplo de interpretação geométrica (Reflexão):
@@ -324,7 +350,11 @@ reflexao_y = np.array([[-1, 0],
 
 vetor_refletido = reflexao_y @ vetor_p
 print("Vetor original: ", vetor_p)
-print("Vetor após reflexão no eixo Y: ", vetor_refletido) # Saída: [-5, 3]
+print("Vetor após reflexão no eixo Y: ", vetor_refletido) 
+
+## A saída será:
+# Vetor original:  [5 3]
+# Vetor após reflexão no eixo Y:  [-5  3]
 
 ##################################################################################################
 
@@ -340,12 +370,16 @@ M = np.array([[3, 2, 1],
 det = np.linalg.det(M)
 
 print("Determinante da matriz M:")
-print(round(det)) # O round ajuda a mostrar o valor inteiro (ex: 34)
+print(round(det)) # O round ajuda a mostrar o valor inteiro (no caso será 22)
+
+## A saída será:
+# Determinante da matriz M:
+# 22
 
 #######################
 
 ## Outro exemplo de determinante (Matriz Triangular):
-# Em matrizes triangulares, o det é o produto da diagonal principal (Exercício 16c)
+# Em matrizes triangulares, o det é o produto da diagonal principal
 M16c = np.array([[5, 1, 8, 6],
                  [0, 3, 7, 5],
                  [0, 0, 2, 2],
@@ -354,7 +388,8 @@ M16c = np.array([[5, 1, 8, 6],
 det_16c = np.linalg.det(M16c)
 print("16c. Determinante (5 * 3 * 2 * -2): ", round(det_16c))
 
-# A saída será: -60
+## A saída será:
+# 16c. Determinante (5 * 3 * 2 * -2):  -60
 
 ##################################################################################################
 
@@ -365,7 +400,7 @@ import sympy as sp
 # Definindo o símbolo x
 x = sp.Symbol('x')
 
-# Criando uma matriz com x (como na Questão 3 da sua lista)
+# Criando uma matriz com x
 matriz_x = sp.Matrix([[x, x+2], 
                       [5, 3]])
 
@@ -373,7 +408,11 @@ matriz_x = sp.Matrix([[x, x+2],
 det_simbolico = matriz_x.det()
 
 print("Determinante Simbólico:")
-print(det_simbolico) # Saída: 3*x - 5*(x + 2)
+print(det_simbolico) 
+
+## A saída será:
+# Determinante Simbólico:
+# -2*x - 10
 
 # Resolvendo a equação det = x
 equacao = sp.Eq(det_simbolico, x)
@@ -382,10 +421,14 @@ solucao = sp.solve(equacao, x)
 print("\nSolução da equação para x:")
 print(solucao)
 
+## A saída será:
+# Solução da equação para x:
+# [-10/3]
+
 #######################
 
 ## Outro exemplo de variáveis simbólicas (Equação de 2º grau):
-# Resolvendo determinante que resulta em equação (como no Exercício 2)
+# Resolvendo determinante que resulta em equação 
 x_sym = sp.Symbol('x')
 matriz_eq = sp.Matrix([[x_sym, -3], 
                        [x_sym + 2, x_sym - 2]])
@@ -393,3 +436,6 @@ matriz_eq = sp.Matrix([[x_sym, -3],
 # Resolvendo: det(matriz) = 8
 solucao_eq2 = sp.solve(sp.Eq(matriz_eq.det(), 8), x_sym)
 print("2. Raízes de x para det=8: ", solucao_eq2)
+
+## A saída será:
+# 2. Raízes de x para det=8:  [-2, 1]
