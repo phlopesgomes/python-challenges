@@ -226,6 +226,47 @@ print("65. Resultado da multiplicação: ", resultado_65)
 # A saída será:
 # [[5]
 #  [8]]
+
+##################################################################################################
+
+### POTENCIAÇÃO DE MATRIZES;
+## A potenciação de uma matriz A^n consiste em multiplicar a matriz A por ela mesma n vezes.
+## Importante: A matriz deve ser QUADRADA para poder ser elevada a uma potência.
+# No NumPy, usamos np.linalg.matrix_power(matriz, n).
+
+A = np.array([[1, 2], 
+              [3, 4]])
+
+# Exemplo: Calculando A ao quadrado (A²)
+A_quadrado = np.linalg.matrix_power(A, 2) 
+# Essa é a função que usamos para potência, repare que primeiro vem a nossa variável (A) e em seguida a potência (A**2)
+
+print("Matriz A elevada ao quadrado (A²):")
+print(A_quadrado)
+# O resultado nesse caso é o mesmo que fazer A @ A
+
+# A saída será:
+# [[ 7 10]
+#  [15 22]]
+
+#######################
+
+## Outro exemplo de potenciação:
+# Elevando uma matriz à potência 0 ou 1.
+# Qualquer matriz quadrada elevada a 0 resulta na MATRIZ IDENTIDADE.
+# Qualquer matriz quadrada elevada a 1 resulta nela mesma.
+
+M = np.array([[5, 8], 
+              [2, 3]])
+
+M_elevado_0 = np.linalg.matrix_power(M, 0)
+print("Matriz M elevada a 0 (Resulta na Identidade):")
+print(M_elevado_0)
+
+# A saída será:
+# [[1. 0.]
+#  [0. 1.]]
+
 ##################################################################################################
 
 ### MATRIZ INVERSA;
