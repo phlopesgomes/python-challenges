@@ -1353,10 +1353,9 @@ def fibonacci_iterativo(n):
 n = int(input("Digite um número para calcular o Fibonacci: "))
 print("Fibonacci:", fibonacci_iterativo(n))
 
+
 # Ficará assim no terminal:
 # Digite um número para calcular o Fibonacci: (digitei 6)
 # Fibonacci: 8
 # Digite um número para calcular o Fibonacci: (digitei 6)
 # Fibonacci: 8
-
-
