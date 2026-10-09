@@ -439,3 +439,4 @@ print("2. Raízes de x para det=8: ", solucao_eq2)
 
 ## A saída será:
 # 2. Raízes de x para det=8:  [-2, 1]
+ 
