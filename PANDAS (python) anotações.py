@@ -535,7 +535,7 @@ registros_a_remover = df.query('Valor == 0 | Condominio == 0').index
 # Exemplo 2: Visualizando os índices de todas as linhas presentes no DataFrame
 df.index
 
-
+ 
 #################################################################################################
 
 
