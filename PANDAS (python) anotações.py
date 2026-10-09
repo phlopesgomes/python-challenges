@@ -185,6 +185,7 @@ dados[['Quartos', 'Valor']]
 # Retorna um DataFrame (estrutura bidimensional).
 # Exemplo de tipos observados nesta seleção:
 # - "Quartos": int64 (números inteiros)
+<<<<<<< HEAD
 # - "Valor": float64 (números decimais)
 
 
@@ -558,3 +559,6 @@ df.drop([0, 1, 5], axis=0, inplace=True)
 df.drop(['Tipo', 'IPTU'], axis=1, inplace=True)
 # Neste exemplo, as colunas 'Tipo' e 'IPTU' serão removidas do DataFrame.
 
+=======
+# - "Valor": float64 (números decimais)
+>>>>>>> 164b45e7db88d9decf4b87399d6a13f42005c77a
