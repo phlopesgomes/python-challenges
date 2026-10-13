@@ -25,15 +25,15 @@ url = 'link_do_arquivo'
 ### O Pandas fornece diversas funções para importar e exportar dados em diferentes formatos. 
 ## As principais funções do Pandas para importar dados são as seguintes:
 
-read_csv() ## Essa função é usada para ler arquivos CSV (Comma Separated Values), que são arquivos de texto que contêm dados separados por vírgulas. É possível passar diversos parâmetros para personalizar a leitura do csv, como delimitador, cabeçalho, tipo de encoding, entre outros.
+.read_csv() ## Essa função é usada para ler arquivos CSV (Comma Separated Values), que são arquivos de texto que contêm dados separados por vírgulas. É possível passar diversos parâmetros para personalizar a leitura do csv, como delimitador, cabeçalho, tipo de encoding, entre outros.
 
-read_excel() ## Essa função é usada para ler arquivos do Excel (.xls ou .xlsx) e criar um DataFrame a partir dos dados.
+.read_excel() ## Essa função é usada para ler arquivos do Excel (.xls ou .xlsx) e criar um DataFrame a partir dos dados.
 
-read_json() ## Essa função é usada para ler arquivos JSON (JavaScript Object Notation), que são arquivos de texto que contêm dados em formato de objeto JavaScript.
+.read_json() ## Essa função é usada para ler arquivos JSON (JavaScript Object Notation), que são arquivos de texto que contêm dados em formato de objeto JavaScript.
 
-read_html() ## Essa função é usada para ler tabelas HTML, que são estruturas de dados organizadas em formato de tabela em uma página da web.
+.read_html() ## Essa função é usada para ler tabelas HTML, que são estruturas de dados organizadas em formato de tabela em uma página da web.
 
-read_sql() ## Essa função é usada para ler dados de um banco de dados relacional, como o MySQL, PostgreSQL e SQL Server. O Pandas é capaz de importar dados de diferentes formas, permitindo ajustar parâmetros como a consulta, o nome da tabela e o tipo de dados das colunas.
+.read_sql() ## Essa função é usada para ler dados de um banco de dados relacional, como o MySQL, PostgreSQL e SQL Server. O Pandas é capaz de importar dados de diferentes formas, permitindo ajustar parâmetros como a consulta, o nome da tabela e o tipo de dados das colunas.
 
 ### Utilizando uma função das citadas acima para importar uma base de dados CSV.
 url = 'https://raw.githubusercontent.com/alura-cursos/pandas-conhecendo-a-biblioteca/main/base-de-dados/aluguel.csv'
@@ -236,6 +236,7 @@ dados.groupby('Tipo', axis=0).mean(numeric_only=True)
 # Exemplo 2: Agrupando ao longo das colunas pelo tipo de dado (eixo 1)
 dados.groupby(by=dados.dtypes, axis=1).first()
 # Neste exemplo, o DataFrame é agrupado pelo tipo de dado de cada coluna (object, int64, float64), e a função .first() retorna o primeiro valor de cada grupo de colunas.
+
 
 ## 'sort': define se os rótulos dos grupos serão ordenados alfabeticamente/numericamente (True por padrão)
 
@@ -557,3 +558,140 @@ df.drop([0, 1, 5], axis=0, inplace=True)
 # Exemplo 4: Removendo múltiplas colunas simultaneamente passando um array/lista com os nomes das colunas
 df.drop(['Tipo', 'IPTU'], axis=1, inplace=True)
 # Neste exemplo, as colunas 'Tipo' e 'IPTU' serão removidas do DataFrame.
+
+
+#################################################################################################
+
+
+### Seleção e Filtragem Booleana (Seleção Manual por Condições / Máscara Booleana);
+
+## A filtragem booleana permite selecionar linhas de um DataFrame aplicando condições diretamente sobre suas colunas. 
+# Cada condição retorna uma Series de True/False (máscara booleana). Quando essa Series é passada dentro dos colchetes do DataFrame (df[selecao]), apenas as linhas onde o valor é True são mantidas, enquanto as linhas com False são ignoradas.
+
+## Ao combinar duas ou mais condições, cada expressão DEVE estar entre parênteses () e unida por operadores lógicos Bitwise.
+
+
+############################
+
+
+### Operador '&' (E / AND);
+## Seleciona apenas as linhas que satisfazem TODAS as condições simultaneamente.
+
+# Exemplo 1: Filtrando em etapas separadas (criando seleções e combinando com o operador '&')
+selecao1 = df['Quartos'] == 1
+selecao2 = df['Valor'] < 1200
+selecao_final = (selecao1) & (selecao2)
+df_1 = df[selecao_final]
+
+# Exemplo 2: Filtrando diretamente em uma única linha com três condições compostas ('Quartos' >= 2, 'Valor' < 3000 e 'Area' > 70)
+selecao = (df['Quartos'] >= 2) & (df['Valor'] < 3000) & (df['Area'] > 70)
+df_2 = df[selecao]
+
+
+############################
+
+
+### Operador '|' (OU / OR);
+## Seleciona as linhas que satisfazem PELO MENOS UMA das condições (se qualquer uma for True, a linha é mantida).
+
+# Exemplo 1: Selecionando imóveis que sejam no bairro "Centro" OU tenham aluguel menor que R$ 1000
+selecao_or1 = (df['Bairro'] == 'Centro') | (df['Valor'] < 1000)
+df_or1 = df[selecao_or1]
+
+# Exemplo 2: Selecionando imóveis que possuam mais de 3 quartos OU mais de 2 suítes
+selecao_or2 = (df['Quartos'] > 3) | (df['Suites'] > 2)
+df_or2 = df[selecao_or2]
+
+
+#################################################################################################
+
+
+### Exportação e salvamento de dados em múltiplos formatos (.to_*());
+
+## O Pandas fornece diversas funções .to_*() para exportar e salvar um DataFrame em diferentes formatos de arquivos e bancos de dados.
+# As principais funções de exportação do Pandas são o par direto das funções de leitura (read_*):
+
+.to_csv(): # Salva o DataFrame no formato CSV (Comma/Semicolon Separated Values)
+.to_excel(): # Salva o DataFrame em uma planilha do Excel (.xlsx ou .xls)
+.to_json(): # Salva o DataFrame no formato JSON (JavaScript Object Notation)
+.to_html(): # Exporta o DataFrame formatado como uma tabela HTML (tags <table>)
+.to_sql(): # Grava os registros do DataFrame diretamente em uma tabela de banco de dados relacional (SQL)
+
+
+############################
+
+
+### 1. Exportação para CSV (.to_csv());
+
+## 'index': especifica se o índice do DataFrame deve ser salvo como uma coluna no arquivo (True por padrão).
+# Definir index=False evita a criação da coluna extra 'Unnamed: 0' ao ler o arquivo novamente.
+
+## 'sep': define o caractere utilizado como separador de colunas (a vírgula ',' é o padrão; ';' é muito comum no Brasil).
+
+# Exemplo 1: Salvando em CSV sem a coluna de índices e com ponto e vírgula como separador
+df.to_csv('dados_apartamentos.csv', index=False, sep=';')
+
+# Exemplo 2: Leitura para validação da exportação do CSV
+dados_csv = pd.read_csv('dados_apartamentos.csv', sep=';')
+
+
+############################
+
+
+### 2. Exportação para Excel (.to_excel());
+
+## 'index': define se os índices das linhas serão mantidos na planilha (True por padrão; index=False remove).
+## 'sheet_name': define o nome da aba/folha dentro do arquivo do Excel onde os dados serão salvos.
+
+# Exemplo 1: Salvando o DataFrame em um arquivo Excel (.xlsx) definindo o nome da aba e sem índices
+df.to_excel('dados_apartamentos.xlsx', index=False, sheet_name='Apartamentos')
+
+# Exemplo 2: Leitura para validação da exportação do Excel
+dados_excel = pd.read_excel('dados_apartamentos.xlsx', sheet_name='Apartamentos')
+
+
+############################
+
+
+### 3. Exportação para JSON (.to_json());
+
+## 'orient': define a estrutura/formato da representação do JSON (ex: 'records', 'index', 'columns', 'values').
+# O formato orient='records' salva os dados como uma lista de dicionários/objetos, ideal para APIs e web.
+
+# Exemplo 1: Salvando o DataFrame no formato JSON organizado por registros (lista de dicionários)
+df.to_json('dados_apartamentos.json', orient='records', indent=4)
+
+# Exemplo 2: Leitura para validação da exportação do JSON
+dados_json = pd.read_json('dados_apartamentos.json')
+
+
+############################
+
+
+### 4. Exportação para HTML (.to_html());
+
+## 'index': define se os índices serão exibidos na tabela HTML (index=False remove a primeira coluna de índice).
+# Retorna ou salva o código em formato de tags HTML (<table>...</table>), muito útil para relatórios e dashboards web.
+
+# Exemplo 1: Exportando o DataFrame diretamente para um arquivo de página HTML
+df.to_html('dados_apartamentos.html', index=False)
+
+# Exemplo 2: Leitura para validação da exportação do HTML (retorna uma lista de DataFrames)
+dados_html = pd.read_html('dados_apartamentos.html')[0]
+
+
+############################
+
+
+### 5. Exportação para Banco de Dados SQL (.to_sql());
+
+## 'name': nome da tabela que será criada ou atualizada no banco de dados.
+## 'con': objeto de conexão com o banco de dados (criado via SQLAlchemy ou conexão ativa).
+## 'if_exists': define a ação caso a tabela já exista no banco ('fail', 'replace' para sobrescrever, 'append' para inserir no final).
+## 'index': especifica se o índice do DataFrame deve ser gravado como uma coluna no banco de dados (index=False ignora).
+
+# Exemplo 1: Gravando o DataFrame em uma tabela SQL (substituindo a tabela caso já exista)
+# df.to_sql(name='tabela_apartamentos', con=conexao_engine, if_exists='replace', index=False)
+
+# Exemplo 2: Leitura para validação da exportação do banco SQL
+# dados_sql = pd.read_sql('SELECT * FROM tabela_apartamentos', con=conexao_engine)
