@@ -13,7 +13,9 @@
 import pandas as pd
 
 
+
 #################################################################################################
+
 
 
 ### Importação de bases de dados;
@@ -54,7 +56,9 @@ type(dados)
 # pandas.core.frame.DataFrame
 
 
+
 #################################################################################################
+
 
 
 ### Visualização inicial dos dados (.head() e .tail());
@@ -74,7 +78,9 @@ dados.tail()
 dados.tail(3) # Exibe os 3 últimos registros
 
 
+
 #################################################################################################
+
 
 
 ### Inspeção da dimensão e estrutura dos dados (.shape, .columns e .info());
@@ -127,7 +133,9 @@ dados.info()
 # memory usage: 2.3+ MB
 
 
+
 #################################################################################################
+
 
 
 ### Tipos de dados no Pandas (dtypes);
@@ -166,7 +174,9 @@ dados['Tipo'] = dados['Tipo'].astype('category')
 # dados['Data'] = pd.to_datetime(dados['Data'])
 
 
+
 #################################################################################################
+
 
 
 ### Seleção de colunas e estruturas do Pandas (Series vs DataFrame);
@@ -188,7 +198,9 @@ dados[['Quartos', 'Valor']]
 # - "Valor": float64 (números decimais)
 
 
+
 #################################################################################################
+
 
 
 ### Análise estatística e agrupamento de dados (.mean(), .groupby(), .sort_values() e .plot());
@@ -289,7 +301,9 @@ df_preco_tipo.plot(kind='bar', figsize=(12, 6), color='blue');
 ## Pandas Groupby: 5 métodos para conhecer em Python (https://builtin.com/data-science/pandas-groupby).
 
 
+
 #################################################################################################
+
 
 
 ### Notação de ponto, valores únicos (.unique());
@@ -312,7 +326,9 @@ dados.Tipo.unique()
 dados.Bairro.unique()
 
 
+
 #################################################################################################
+
 
 
 ### .query() = permite filtrar linhas de um DataFrame utilizando uma expressão/condição em formato de texto (string)
@@ -350,7 +366,9 @@ df_preco_tipo = df.groupby('Tipo')[['Valor']].mean().sort_values('Valor')
 df_preco_tipo.plot(kind='barh', figsize=(14, 10), color='purple');
 
 
+
 #################################################################################################
+
 
 
 ### Contagem de frequências e percentuais (.value_counts());
@@ -376,7 +394,9 @@ df['Tipo'].value_counts(normalize=True)
 df['Bairro'].value_counts(normalize=True)
 
 
+
 #################################################################################################
+
 
 
 ### .to_frame() = converte uma Series (como a retornada pelo .value_counts()) em um DataFrame
@@ -391,7 +411,9 @@ df['Tipo'].value_counts(normalize=True).to_frame().sort_values('proportion')
 df['Tipo'].value_counts().to_frame()
 
 
+
 #################################################################################################
+
 
 
 ### Renomeando colunas do DataFrame (.rename());
@@ -420,7 +442,9 @@ df_percentual.rename(columns={'proportion': 'Percentual'}, inplace=True)
 df_percentual = df_percentual.rename(columns={'Tipo': 'Percentuais'}, inplace=False)
 
 
+
 #################################################################################################
+
 
 
 ### Customização de gráficos (.plot()));
@@ -440,7 +464,9 @@ df_bairro = df['Bairro'].value_counts(normalize=True).head(5).to_frame()
 df_bairro.plot(kind='bar', figsize=(10, 5), color='blue', edgecolor='red', xlabel='Bairros', ylabel='Proporção');
 
 
+
 #################################################################################################
+
 
 
 ## Filtragem por igualdade exata de texto com .query();
@@ -454,7 +480,9 @@ df = df.query('Tipo == "Apartamento"')
 df_centro = df.query('Bairro == "Centro"')
 
 
+
 #################################################################################################
+
 
 
 ### Verificação e identificação de dados nulos (.isnull() e .isnull().sum());
@@ -482,7 +510,9 @@ df.isnull().sum()
 df['IPTU'].isnull().sum()
 
 
+
 #################################################################################################
+
 
 
 ### Estratégias de tratamento de dados nulos no Pandas;
@@ -510,6 +540,24 @@ df['Valor'].fillna(method='ffill')
 # Exemplo 2: Preenchendo nulos da coluna 'IPTU' propagando o valor da linha posterior (bfill)
 df['IPTU'].fillna(method='bfill')
 
+############################
+
+
+## Subtituição de valores específicos (.replace());
+
+## .replace() = método utilizado para substituir valores específicos dentro de uma coluna ou de todo o DataFrame.
+# É uma alternativa extremamente versátil ao .fillna(), pois permite trocar não apenas valores ausentes (NaN), mas também caracteres incorretos, textos indesejados ou códigos específicos por novos valores.
+
+## Parâmetro 'inplace': quando True, aplica as substituições diretamente no próprio DataFrame sem necessidade de reatribuir a variável.
+
+
+# Exemplo 1: Substituindo o valor 0 por NaN na coluna 'Valor' (caso 0 represente um dado ausente e não um valor real)
+import numpy as np
+df['Valor'] = df['Valor'].replace(0, np.nan)
+
+
+# Exemplo 2: Substituindo múltiplos valores simultaneamente utilizando um dicionário {valor_antigo: valor_novo}
+df['Tipo'] = df['Tipo'].replace({'Apartamento': 'Apt', 'Casa': 'Cas'})
 
 ############################
 
@@ -523,12 +571,15 @@ df['Valor'] = df['Valor'].interpolate()
 df = df.interpolate()
 
 
+
 #################################################################################################
+
 
 
 ### Identificação de índices (.index);
 
-## .index = atributo que retorna os índices (rótulos das linhas) do DataFrame ou Series. É muito útil em conjunto com filtros (como .query()) para capturar os índices de registros específicos que precisam ser isolados ou removidos.
+## .index = atributo que retorna os índices (rótulos das linhas) do DataFrame ou Series. 
+# É muito útil em conjunto com filtros (como .query()) para capturar os índices de registros específicos que precisam ser isolados ou removidos.
 
 # Exemplo 1: Capturando os índices das linhas que atendem a uma condição e armazenando em uma variável
 registros_a_remover = df.query('Valor == 0 | Condominio == 0').index
@@ -536,8 +587,10 @@ registros_a_remover = df.query('Valor == 0 | Condominio == 0').index
 # Exemplo 2: Visualizando os índices de todas as linhas presentes no DataFrame
 df.index
 
+
  
 #################################################################################################
+
 
 
 ### Removendo linhas ou colunas do DataFrame (.drop());
@@ -560,7 +613,9 @@ df.drop(['Tipo', 'IPTU'], axis=1, inplace=True)
 # Neste exemplo, as colunas 'Tipo' e 'IPTU' serão removidas do DataFrame.
 
 
+
 #################################################################################################
+
 
 
 ### Seleção e Filtragem Booleana (Seleção Manual por Condições / Máscara Booleana);
@@ -603,7 +658,9 @@ selecao_or2 = (df['Quartos'] > 3) | (df['Suites'] > 2)
 df_or2 = df[selecao_or2]
 
 
+
 #################################################################################################
+
 
 
 ### Exportação e salvamento de dados em múltiplos formatos (.to_*());
@@ -612,11 +669,17 @@ df_or2 = df[selecao_or2]
 # As principais funções de exportação do Pandas são o par direto das funções de leitura (read_*):
 
 .to_csv(): # Salva o DataFrame no formato CSV (Comma/Semicolon Separated Values)
+
 .to_excel(): # Salva o DataFrame em uma planilha do Excel (.xlsx ou .xls)
+
 .to_json(): # Salva o DataFrame no formato JSON (JavaScript Object Notation)
+
 .to_html(): # Exporta o DataFrame formatado como uma tabela HTML (tags <table>)
+
 .to_sql(): # Grava os registros do DataFrame diretamente em uma tabela de banco de dados relacional (SQL)
 
+## Esses são apenas alguns exemplos, existem outros métodos disponíveis no Pandas para salvar arquivos em diferentes formatos. 
+# Caso queira conhecê-los, acesse a documentação: 'https://pandas.pydata.org/docs/user_guide/io.html#io-tools-text-csv-hdf5'
 
 ############################
 
@@ -695,3 +758,125 @@ dados_html = pd.read_html('dados_apartamentos.html')[0]
 
 # Exemplo 2: Leitura para validação da exportação do banco SQL
 # dados_sql = pd.read_sql('SELECT * FROM tabela_apartamentos', con=conexao_engine)
+
+
+
+#################################################################################################
+
+
+
+### Criação de novas colunas numéricas e operações aritméticas entre colunas (Operações Vetorizadas);
+
+## No Pandas, é possível criar novas colunas realizando operações aritméticas (soma '+', subtração '-', multiplicação '*', divisão '/') diretamente entre colunas existentes ou valores escalares (números fixos).
+# A operação é executada linha por linha de forma vetorizada (otimizada). 
+
+## Para criar uma nova coluna, basta atribuir o resultado da operação a um novo nome de coluna entre colchetes no DataFrame: df['Coluna_Nova'] = operação
+
+## ATENÇÃO COM DADOS NULOS (NaN): Operações aritméticas envolvendo valores nulos (NaN) resultam em NaN no resultado final. Por isso, é fundamental tratar os nulos (ex: com .fillna(0, inplace=True)) antes de realizar cálculos entre colunas.
+
+
+# Exemplo 1: Criando a coluna 'Valor_por_mes' somando os valores mensais de aluguel e condomínio
+df['Valor_por_mes'] = df['Valor'] + df['Condominio']
+
+
+# Exemplo 2: Criando a coluna 'Valor_por_ano' multiplicando os gastos mensais por 12 e somando o IPTU anual
+df['Valor_por_ano'] = df['Valor_por_mes'] * 12 + df['IPTU']
+
+
+
+#################################################################################################
+
+
+
+### Criação de colunas categóricas de texto (Strings) e concatenação (.astype(str));
+
+## No Pandas, o operador de soma '+' aplicado a colunas do tipo texto (string / object) realiza a concatenação (junção) dos textos linha por linha.
+# Podemos intercalar colunas textuais com textos fixos inseridos entre aspas (ex: ' em ', ' com ') para formatar a mensagem desejada.
+
+## CONVERSÃO DE TIPOS OBRIGATÓRIA (.astype(str)): O Pandas gera erro (TypeError) ao tentar concatenar colunas numéricas (int, float) diretamente com texto. 
+# Para evitar o erro, é necessário converter previamente as colunas numéricas em texto utilizando o método .astype(str).
+
+## QUEBRA DE LINHA NO CÓDIGO ('\'): A barra invertida '\' permite quebrar comandos longos do Python em múltiplas linhas no editor sem interromper a execução do código.
+
+
+# Exemplo 1: Concatenando colunas de texto com textos fixos de espaçamento
+df['Descricao_Simples'] = df['Tipo'] + ' em ' + df['Bairro']
+
+
+# Exemplo 2: Criando coluna descritiva completa convertendo colunas numéricas ('Quartos' e 'Vagas') em string com .astype(str)
+df['Descricao'] = df['Tipo'] + ' em ' + df['Bairro'] + ' com ' + \
+                  df['Quartos'].astype(str) + ' quarto(s) ' + \
+                  'e ' + df['Vagas'].astype(str) + ' vaga(s) de garagem.'
+# O resultado final da coluna 'Descricao' será uma frase completa descrevendo o imóvel, como por exemplo: "Apartamento em Centro com 2 quarto(s) e 1 vaga(s) de garagem."
+
+
+
+#################################################################################################
+
+
+
+### Criação de colunas condicionais (.apply() e função lambda);
+
+## .apply() = método utilizado para aplicar uma função (personalizada ou pré-existente) ao longo de um eixo de um DataFrame ou Series (linha por linha ou coluna por coluna).
+
+## Função Lambda (lambda x: ...) = função anônima e rápida escrita em uma única linha, onde 'x' representa individualmente cada valor contido na coluna selecionada.
+# É ideal para aplicar regras condicionais no formato ternário (if/else em uma linha): "valor_se_true" if condição else "valor_se_false".
+
+
+# Exemplo 1: Criando a coluna binária 'Possui_suite' retornando 'Sim' para mais de 0 suítes e 'Não' caso contrário
+df['Possui_suite'] = df['Suites'].apply(lambda x: 'Sim' if x > 0 else 'Não')
+
+
+# Exemplo 2: Criando a coluna categórica 'Categoria_Valor' aplicando condição de limite de preço
+df['Categoria_Valor'] = df['Valor'].apply(lambda x: 'Alto' if x >= 5000 else 'Padrão')
+
+
+
+#################################################################################################
+
+
+
+### Resumo: Principais métodos para criação de novas colunas no Pandas;
+
+## O Pandas oferece diferentes formas de criar e derivar novas colunas em um DataFrame:
+
+
+# 1. Atribuição direta de valores (lista, array ou valor constante):
+# Atribui diretamente uma sequência de dados ou um valor único a um novo nome de coluna.
+df['Coluna_Lista'] = [7, 8, 9]
+df['Coluna_Fixa'] = 0
+
+
+# 2. Operações diretas (vetorizadas) entre colunas existentes:
+# Combina colunas através de operações matemáticas ou concatenação de textos.
+df['Soma_AB'] = df['A'] + df['B']
+
+
+# 3. Método .assign():
+# Permite criar ou modificar uma ou mais colunas retornando um novo DataFrame (ideal para encadeamento de métodos / method chaining).
+df = df.assign(Multiplicacao_AB = df['A'] * df['B'])
+
+
+# 4. Método .apply() com função customizada / lambda:
+# Aplica transformações ou lógicas condicionais complexas elemento a elemento da coluna.
+df['Dobro_A'] = df['A'].apply(lambda x: x * 2)
+
+
+
+#################################################################################################
+
+
+
+### Referências e materiais para aprofundamento em Pandas;
+
+## 1. Documentação Oficial do Pandas (Pandas API Reference):
+# - Formato: Gratuito | Inglês | Código e Exemplos
+# - Descrição: A API oficial do Pandas fornece a documentação completa de todas as funções e métodos da biblioteca.
+#   É a fonte essencial para consultar parâmetros detalhados de manipulação de séries temporais, matrizes numéricas, DataFrames e Series.
+# - Link de acesso: https://pandas.pydata.org/docs/reference/index.html
+
+
+## 2. Livro "Python Para Análise de Dados" (Wes McKinney - Criador do Pandas):
+# - Formato: Pago | Português | Livro Físico / E-book
+# - Descrição: Guia prático escrito pelo próprio criador da biblioteca Pandas. Ensina passo a passo como carregar, limpar,
+#   transformar, processar e analisar dados utilizando Python, Pandas, NumPy e IPython em cenários do mundo real.
