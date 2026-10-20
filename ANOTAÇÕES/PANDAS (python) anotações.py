@@ -69,7 +69,9 @@ dados.head()
 ## É possível passar como parâmetro a quantidade de linhas iniciais desejadas:
 dados.head(3) # Exibe os 3 primeiros registros
 
+
 ############################
+
 
 ## .tail() = exibe por padrão os 5 últimos registros da base de dados
 dados.tail()
@@ -91,7 +93,9 @@ dados.shape
 # (32960, 9)
 # O primeiro valor (32960) é a quantidade de linhas; o segundo (9) é a quantidade de colunas.
 
+
 ############################
+
 
 ## .columns = atributo que exibe os nomes de todas as colunas da base de dados
 dados.columns
@@ -109,7 +113,9 @@ dados.columns
 # Condominio: valor mensal do condomínio
 # IPTU: valor do IPTU'
 
+
 ############################
+
 
 ## .info() = método que exibe o resumo geral do DataFrame
 # Informa a quantidade total de registros, valores não nulos (Non-Null Count) e o tipo de dado de cada coluna (Dtype).
@@ -151,14 +157,18 @@ dados.info()
 # - timedelta64[ns]: intervalos ou diferenças entre duas datas
 # - category: dados categóricos/rótulos repetidos (otimiza o uso de memória)
 
+
 ############################
+
 
 ## Verificação e conversão de tipos de dados;
 
 ## .dtypes = atributo que retorna apenas o tipo de dado de cada coluna
 dados.dtypes
 
+
 ############################
+
 
 ## .astype() = método utilizado para converter o tipo de dado de uma coluna
 
@@ -194,10 +204,37 @@ df = df.astype({
     'Tipo': 'category'
 })
 
+
 ############################
 
-## pd.to_datetime() = função recomendada para converter colunas de datas
-# dados['Data'] = pd.to_datetime(dados['Data'])
+
+### Conversão de colunas de texto (object) para Data/Hora (pd.to_datetime());
+
+## pd.to_datetime() = função oficial do Pandas para converter colunas textuais em objetos de data e hora (datetime64[ns]).
+
+### Parâmetros principais do pd.to_datetime():
+## 'dayfirst=True': indica explicitamente que a data começa pelo dia (padrão brasileiro DD/MM/AAAA), evitando inversões com o padrão americano (MM/DD/AAAA).
+## 'format': especifica o formato exato da data em texto (%d = dia, %m = mês, %Y = ano com 4 dígitos, %y = ano com 2 dígitos).
+## 'errors': define o comportamento caso existam dados corrompidos ou inválidos:
+#   - errors='coerce': converte datas inválidas em NaT (Not a Time, o valor nulo de datas do Pandas), sem quebrar a execução do código.
+
+
+# Exemplo 1: Conversão direta de data no padrão brasileiro (DD/MM/AAAA)
+df['VIGÊNCIA FINAL'] = pd.to_datetime(df['VIGÊNCIA FINAL'], dayfirst=True)
+
+
+# Exemplo 2: Conversão explicitando o formato exato em string
+df['Data_Cadastro'] = pd.to_datetime(df['Data_Cadastro'], format='%d/%m/%Y')
+
+
+# Exemplo 3: Conversão com tratamento de erros (transformando dados/textos inválidos em NaT)
+df['Data_Emissao'] = pd.to_datetime(df['Data_Emissao'], format='%d/%m/%Y', errors='coerce')
+
+
+# Extra: Extraindo partes da data após a conversão (utilizando o acessor .dt):
+# df['Ano'] = df['VIGÊNCIA FINAL'].dt.year
+# df['Mes'] = df['VIGÊNCIA FINAL'].dt.month
+# df['Dia'] = df['VIGÊNCIA FINAL'].dt.day
 
 
 
@@ -541,7 +578,7 @@ df['IPTU'].isnull().sum()
 
 
 
-### Estratégias de tratamento de dados nulos no Pandas;
+### Estratégias de tratamento de dados nulos e conversão de valores monetários/decimais no Pandas;
 
 ## 1. Remoção de dados nulos (.dropna()):
 # Assim como vimos anteriormente em parâmetros de outras funções, o método .dropna() remove as linhas ou colunas que contenham valores nulos.
@@ -566,6 +603,7 @@ df['Valor'].fillna(method='ffill')
 # Exemplo 2: Preenchendo nulos da coluna 'IPTU' propagando o valor da linha posterior (bfill)
 df['IPTU'].fillna(method='bfill')
 
+
 ############################
 
 
@@ -584,6 +622,28 @@ df['Valor'] = df['Valor'].replace(0, np.nan)
 
 # Exemplo 2: Substituindo múltiplos valores simultaneamente utilizando um dicionário {valor_antigo: valor_novo}
 df['Tipo'] = df['Tipo'].replace({'Apartamento': 'Apt', 'Casa': 'Cas'})
+
+
+############################
+
+
+## Tratamento e conversão de valores monetários/decimais (.str.replace() com regex=False);
+
+## Em bases brasileiras (CSV/Excel), números decimais utilizam vírgula (,) e separador de milhar com ponto (.).
+# O Pandas lê essas colunas como texto ('object'). Para converter para 'float', é necessário padronizar a string em 3 passos:
+# 1. Remover os pontos de milhar: .str.replace('.', '', regex=False)
+# 2. Substituir a vírgula por ponto decimal: .str.replace(',', '.', regex=False)
+# 3. Converter para decimal com .astype(float)
+
+## Por que utilizar 'regex=False'?
+# Em expressões regulares (Regex), o símbolo de ponto '.' significa "qualquer caractere". 
+# Passar regex=False força o Pandas a tratar o ponto '.' exclusivamente como o caractere literal de texto, evitando que ele apague todo o conteúdo da coluna.
+
+
+# Exemplo: Tratando e convertendo colunas de valores monetários em formato brasileiro para float64
+df['PRÊMIO LÍQUIDO'] = df['PRÊMIO LÍQUIDO'].str.replace('.', '', regex=False).str.replace(',', '.', regex=False).astype(float)
+df['PRÊMIO TOTAL'] = df['PRÊMIO TOTAL'].str.replace('.', '', regex=False).str.replace(',', '.', regex=False).astype(float)
+
 
 ############################
 
@@ -706,6 +766,7 @@ df_or2 = df[selecao_or2]
 
 ## Esses são apenas alguns exemplos, existem outros métodos disponíveis no Pandas para salvar arquivos em diferentes formatos. 
 # Caso queira conhecê-los, acesse a documentação: 'https://pandas.pydata.org/docs/user_guide/io.html#io-tools-text-csv-hdf5'
+
 
 ############################
 
