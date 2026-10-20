@@ -162,11 +162,37 @@ dados.dtypes
 
 ## .astype() = método utilizado para converter o tipo de dado de uma coluna
 
-# Exemplo 1: Convertendo a coluna "Quartos" de inteiro (int64) para decimal (float64)
-dados['Quartos'] = dados['Quartos'].astype(float)
+# Exemplo 1: Conversão para Inteiro (int64 / Int64)
+# Obs: Use 'Int64' (com I maiúsculo) caso a coluna possua valores nulos (NaN), pois o int64 padrão não aceita nulos.
+df['Quartos'] = df['Quartos'].astype(int)
+df['Vagas'] = df['Vagas'].astype('Int64')
 
-# Exemplo 2: Convertendo a coluna "Tipo" para o tipo categórico (category)
-dados['Tipo'] = dados['Tipo'].astype('category')
+
+# Exemplo 2: Conversão para Decimal / Flutuante (float64)
+df['Valor_Aluguel'] = df['Valor_Aluguel'].astype(float)
+
+
+# Exemplo 3: Conversão para Texto / String (str / string)
+# Essencial antes de realizar concatenação de colunas numéricas com texto.
+df['Quartos_Texto'] = df['Quartos'].astype(str)
+
+
+# Exemplo 4: Conversão para Categórico (category)
+# Otimiza o consumo de memória e acelera processamentos em colunas com muitos valores repetidos.
+df['Tipo_Imovel'] = df['Tipo_Imovel'].astype('category')
+
+
+# Exemplo 5: Conversão para Booleano (bool)
+# Converte valores numéricos (0 vira False, diferente de 0 vira True) ou expressões em True/False.
+df['Tem_Vaga'] = df['Vagas'].astype(bool)
+
+
+# Exemplo 6: Conversão múltipla de várias colunas simultaneamente passando um dicionário
+df = df.astype({
+    'Quartos': 'int64',
+    'Valor': 'float64',
+    'Tipo': 'category'
+})
 
 ############################
 
