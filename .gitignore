@@ -1,8 +1,8 @@
-# Ignora pastas de treinos com dados privados/locais
+# Ignora pastas de treinos
 Pandas conhecendo a biblioteca - ALURA/
 TREINAMENTOS - COLAB (SOZINHO)/
 
-# Ignora imagens e arquivos do sistema
+# Ignora imagens e ficheiros do sistema
 *.png
 *.jpg
 *.jpeg
