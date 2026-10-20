@@ -1,0 +1,10 @@
+# Ignora pastas de treinos com dados privados/locais
+Pandas conhecendo a biblioteca - ALURA/
+TREINAMENTOS - COLAB (SOZINHO)/
+
+# Ignora imagens e arquivos do sistema
+*.png
+*.jpg
+*.jpeg
+*.ini
+desktop.ini
