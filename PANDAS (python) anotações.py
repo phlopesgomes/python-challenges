@@ -13,7 +13,9 @@
 import pandas as pd
 
 
+
 #################################################################################################
+
 
 
 ### Importação de bases de dados;
@@ -25,15 +27,15 @@ url = 'link_do_arquivo'
 ### O Pandas fornece diversas funções para importar e exportar dados em diferentes formatos. 
 ## As principais funções do Pandas para importar dados são as seguintes:
 
-read_csv() ## Essa função é usada para ler arquivos CSV (Comma Separated Values), que são arquivos de texto que contêm dados separados por vírgulas. É possível passar diversos parâmetros para personalizar a leitura do csv, como delimitador, cabeçalho, tipo de encoding, entre outros.
+.read_csv() ## Essa função é usada para ler arquivos CSV (Comma Separated Values), que são arquivos de texto que contêm dados separados por vírgulas. É possível passar diversos parâmetros para personalizar a leitura do csv, como delimitador, cabeçalho, tipo de encoding, entre outros.
 
-read_excel() ## Essa função é usada para ler arquivos do Excel (.xls ou .xlsx) e criar um DataFrame a partir dos dados.
+.read_excel() ## Essa função é usada para ler arquivos do Excel (.xls ou .xlsx) e criar um DataFrame a partir dos dados.
 
-read_json() ## Essa função é usada para ler arquivos JSON (JavaScript Object Notation), que são arquivos de texto que contêm dados em formato de objeto JavaScript.
+.read_json() ## Essa função é usada para ler arquivos JSON (JavaScript Object Notation), que são arquivos de texto que contêm dados em formato de objeto JavaScript.
 
-read_html() ## Essa função é usada para ler tabelas HTML, que são estruturas de dados organizadas em formato de tabela em uma página da web.
+.read_html() ## Essa função é usada para ler tabelas HTML, que são estruturas de dados organizadas em formato de tabela em uma página da web.
 
-read_sql() ## Essa função é usada para ler dados de um banco de dados relacional, como o MySQL, PostgreSQL e SQL Server. O Pandas é capaz de importar dados de diferentes formas, permitindo ajustar parâmetros como a consulta, o nome da tabela e o tipo de dados das colunas.
+.read_sql() ## Essa função é usada para ler dados de um banco de dados relacional, como o MySQL, PostgreSQL e SQL Server. O Pandas é capaz de importar dados de diferentes formas, permitindo ajustar parâmetros como a consulta, o nome da tabela e o tipo de dados das colunas.
 
 ### Utilizando uma função das citadas acima para importar uma base de dados CSV.
 url = 'https://raw.githubusercontent.com/alura-cursos/pandas-conhecendo-a-biblioteca/main/base-de-dados/aluguel.csv'
@@ -54,7 +56,9 @@ type(dados)
 # pandas.core.frame.DataFrame
 
 
+
 #################################################################################################
+
 
 
 ### Visualização inicial dos dados (.head() e .tail());
@@ -74,7 +78,9 @@ dados.tail()
 dados.tail(3) # Exibe os 3 últimos registros
 
 
+
 #################################################################################################
+
 
 
 ### Inspeção da dimensão e estrutura dos dados (.shape, .columns e .info());
@@ -127,7 +133,9 @@ dados.info()
 # memory usage: 2.3+ MB
 
 
+
 #################################################################################################
+
 
 
 ### Tipos de dados no Pandas (dtypes);
@@ -154,11 +162,37 @@ dados.dtypes
 
 ## .astype() = método utilizado para converter o tipo de dado de uma coluna
 
-# Exemplo 1: Convertendo a coluna "Quartos" de inteiro (int64) para decimal (float64)
-dados['Quartos'] = dados['Quartos'].astype(float)
+# Exemplo 1: Conversão para Inteiro (int64 / Int64)
+# Obs: Use 'Int64' (com I maiúsculo) caso a coluna possua valores nulos (NaN), pois o int64 padrão não aceita nulos.
+df['Quartos'] = df['Quartos'].astype(int)
+df['Vagas'] = df['Vagas'].astype('Int64')
 
-# Exemplo 2: Convertendo a coluna "Tipo" para o tipo categórico (category)
-dados['Tipo'] = dados['Tipo'].astype('category')
+
+# Exemplo 2: Conversão para Decimal / Flutuante (float64)
+df['Valor_Aluguel'] = df['Valor_Aluguel'].astype(float)
+
+
+# Exemplo 3: Conversão para Texto / String (str / string)
+# Essencial antes de realizar concatenação de colunas numéricas com texto.
+df['Quartos_Texto'] = df['Quartos'].astype(str)
+
+
+# Exemplo 4: Conversão para Categórico (category)
+# Otimiza o consumo de memória e acelera processamentos em colunas com muitos valores repetidos.
+df['Tipo_Imovel'] = df['Tipo_Imovel'].astype('category')
+
+
+# Exemplo 5: Conversão para Booleano (bool)
+# Converte valores numéricos (0 vira False, diferente de 0 vira True) ou expressões em True/False.
+df['Tem_Vaga'] = df['Vagas'].astype(bool)
+
+
+# Exemplo 6: Conversão múltipla de várias colunas simultaneamente passando um dicionário
+df = df.astype({
+    'Quartos': 'int64',
+    'Valor': 'float64',
+    'Tipo': 'category'
+})
 
 ############################
 
@@ -166,7 +200,9 @@ dados['Tipo'] = dados['Tipo'].astype('category')
 # dados['Data'] = pd.to_datetime(dados['Data'])
 
 
+
 #################################################################################################
+
 
 
 ### Seleção de colunas e estruturas do Pandas (Series vs DataFrame);
@@ -188,7 +224,9 @@ dados[['Quartos', 'Valor']]
 # - "Valor": float64 (números decimais)
 
 
+
 #################################################################################################
+
 
 
 ### Análise estatística e agrupamento de dados (.mean(), .groupby(), .sort_values() e .plot());
@@ -236,6 +274,7 @@ dados.groupby('Tipo', axis=0).mean(numeric_only=True)
 # Exemplo 2: Agrupando ao longo das colunas pelo tipo de dado (eixo 1)
 dados.groupby(by=dados.dtypes, axis=1).first()
 # Neste exemplo, o DataFrame é agrupado pelo tipo de dado de cada coluna (object, int64, float64), e a função .first() retorna o primeiro valor de cada grupo de colunas.
+
 
 ## 'sort': define se os rótulos dos grupos serão ordenados alfabeticamente/numericamente (True por padrão)
 
@@ -288,7 +327,9 @@ df_preco_tipo.plot(kind='bar', figsize=(12, 6), color='blue');
 ## Pandas Groupby: 5 métodos para conhecer em Python (https://builtin.com/data-science/pandas-groupby).
 
 
+
 #################################################################################################
+
 
 
 ### Notação de ponto, valores únicos (.unique());
@@ -311,7 +352,9 @@ dados.Tipo.unique()
 dados.Bairro.unique()
 
 
+
 #################################################################################################
+
 
 
 ### .query() = permite filtrar linhas de um DataFrame utilizando uma expressão/condição em formato de texto (string)
@@ -349,7 +392,9 @@ df_preco_tipo = df.groupby('Tipo')[['Valor']].mean().sort_values('Valor')
 df_preco_tipo.plot(kind='barh', figsize=(14, 10), color='purple');
 
 
+
 #################################################################################################
+
 
 
 ### Contagem de frequências e percentuais (.value_counts());
@@ -375,7 +420,9 @@ df['Tipo'].value_counts(normalize=True)
 df['Bairro'].value_counts(normalize=True)
 
 
+
 #################################################################################################
+
 
 
 ### .to_frame() = converte uma Series (como a retornada pelo .value_counts()) em um DataFrame
@@ -390,7 +437,9 @@ df['Tipo'].value_counts(normalize=True).to_frame().sort_values('proportion')
 df['Tipo'].value_counts().to_frame()
 
 
+
 #################################################################################################
+
 
 
 ### Renomeando colunas do DataFrame (.rename());
@@ -419,7 +468,9 @@ df_percentual.rename(columns={'proportion': 'Percentual'}, inplace=True)
 df_percentual = df_percentual.rename(columns={'Tipo': 'Percentuais'}, inplace=False)
 
 
+
 #################################################################################################
+
 
 
 ### Customização de gráficos (.plot()));
@@ -439,7 +490,9 @@ df_bairro = df['Bairro'].value_counts(normalize=True).head(5).to_frame()
 df_bairro.plot(kind='bar', figsize=(10, 5), color='blue', edgecolor='red', xlabel='Bairros', ylabel='Proporção');
 
 
+
 #################################################################################################
+
 
 
 ## Filtragem por igualdade exata de texto com .query();
@@ -453,7 +506,9 @@ df = df.query('Tipo == "Apartamento"')
 df_centro = df.query('Bairro == "Centro"')
 
 
+
 #################################################################################################
+
 
 
 ### Verificação e identificação de dados nulos (.isnull() e .isnull().sum());
@@ -481,7 +536,9 @@ df.isnull().sum()
 df['IPTU'].isnull().sum()
 
 
+
 #################################################################################################
+
 
 
 ### Estratégias de tratamento de dados nulos no Pandas;
@@ -509,6 +566,24 @@ df['Valor'].fillna(method='ffill')
 # Exemplo 2: Preenchendo nulos da coluna 'IPTU' propagando o valor da linha posterior (bfill)
 df['IPTU'].fillna(method='bfill')
 
+############################
+
+
+## Subtituição de valores específicos (.replace());
+
+## .replace() = método utilizado para substituir valores específicos dentro de uma coluna ou de todo o DataFrame.
+# É uma alternativa extremamente versátil ao .fillna(), pois permite trocar não apenas valores ausentes (NaN), mas também caracteres incorretos, textos indesejados ou códigos específicos por novos valores.
+
+## Parâmetro 'inplace': quando True, aplica as substituições diretamente no próprio DataFrame sem necessidade de reatribuir a variável.
+
+
+# Exemplo 1: Substituindo o valor 0 por NaN na coluna 'Valor' (caso 0 represente um dado ausente e não um valor real)
+import numpy as np
+df['Valor'] = df['Valor'].replace(0, np.nan)
+
+
+# Exemplo 2: Substituindo múltiplos valores simultaneamente utilizando um dicionário {valor_antigo: valor_novo}
+df['Tipo'] = df['Tipo'].replace({'Apartamento': 'Apt', 'Casa': 'Cas'})
 
 ############################
 
@@ -522,12 +597,15 @@ df['Valor'] = df['Valor'].interpolate()
 df = df.interpolate()
 
 
+
 #################################################################################################
+
 
 
 ### Identificação de índices (.index);
 
-## .index = atributo que retorna os índices (rótulos das linhas) do DataFrame ou Series. É muito útil em conjunto com filtros (como .query()) para capturar os índices de registros específicos que precisam ser isolados ou removidos.
+## .index = atributo que retorna os índices (rótulos das linhas) do DataFrame ou Series. 
+# É muito útil em conjunto com filtros (como .query()) para capturar os índices de registros específicos que precisam ser isolados ou removidos.
 
 # Exemplo 1: Capturando os índices das linhas que atendem a uma condição e armazenando em uma variável
 registros_a_remover = df.query('Valor == 0 | Condominio == 0').index
@@ -536,7 +614,9 @@ registros_a_remover = df.query('Valor == 0 | Condominio == 0').index
 df.index
 
 
+ 
 #################################################################################################
+
 
 
 ### Removendo linhas ou colunas do DataFrame (.drop());
@@ -557,3 +637,272 @@ df.drop([0, 1, 5], axis=0, inplace=True)
 # Exemplo 4: Removendo múltiplas colunas simultaneamente passando um array/lista com os nomes das colunas
 df.drop(['Tipo', 'IPTU'], axis=1, inplace=True)
 # Neste exemplo, as colunas 'Tipo' e 'IPTU' serão removidas do DataFrame.
+
+
+
+#################################################################################################
+
+
+
+### Seleção e Filtragem Booleana (Seleção Manual por Condições / Máscara Booleana);
+
+## A filtragem booleana permite selecionar linhas de um DataFrame aplicando condições diretamente sobre suas colunas. 
+# Cada condição retorna uma Series de True/False (máscara booleana). Quando essa Series é passada dentro dos colchetes do DataFrame (df[selecao]), apenas as linhas onde o valor é True são mantidas, enquanto as linhas com False são ignoradas.
+
+## Ao combinar duas ou mais condições, cada expressão DEVE estar entre parênteses () e unida por operadores lógicos Bitwise.
+
+
+############################
+
+
+### Operador '&' (E / AND);
+## Seleciona apenas as linhas que satisfazem TODAS as condições simultaneamente.
+
+# Exemplo 1: Filtrando em etapas separadas (criando seleções e combinando com o operador '&')
+selecao1 = df['Quartos'] == 1
+selecao2 = df['Valor'] < 1200
+selecao_final = (selecao1) & (selecao2)
+df_1 = df[selecao_final]
+
+# Exemplo 2: Filtrando diretamente em uma única linha com três condições compostas ('Quartos' >= 2, 'Valor' < 3000 e 'Area' > 70)
+selecao = (df['Quartos'] >= 2) & (df['Valor'] < 3000) & (df['Area'] > 70)
+df_2 = df[selecao]
+
+
+############################
+
+
+### Operador '|' (OU / OR);
+## Seleciona as linhas que satisfazem PELO MENOS UMA das condições (se qualquer uma for True, a linha é mantida).
+
+# Exemplo 1: Selecionando imóveis que sejam no bairro "Centro" OU tenham aluguel menor que R$ 1000
+selecao_or1 = (df['Bairro'] == 'Centro') | (df['Valor'] < 1000)
+df_or1 = df[selecao_or1]
+
+# Exemplo 2: Selecionando imóveis que possuam mais de 3 quartos OU mais de 2 suítes
+selecao_or2 = (df['Quartos'] > 3) | (df['Suites'] > 2)
+df_or2 = df[selecao_or2]
+
+
+
+#################################################################################################
+
+
+
+### Exportação e salvamento de dados em múltiplos formatos (.to_*());
+
+## O Pandas fornece diversas funções .to_*() para exportar e salvar um DataFrame em diferentes formatos de arquivos e bancos de dados.
+# As principais funções de exportação do Pandas são o par direto das funções de leitura (read_*):
+
+.to_csv(): # Salva o DataFrame no formato CSV (Comma/Semicolon Separated Values)
+
+.to_excel(): # Salva o DataFrame em uma planilha do Excel (.xlsx ou .xls)
+
+.to_json(): # Salva o DataFrame no formato JSON (JavaScript Object Notation)
+
+.to_html(): # Exporta o DataFrame formatado como uma tabela HTML (tags <table>)
+
+.to_sql(): # Grava os registros do DataFrame diretamente em uma tabela de banco de dados relacional (SQL)
+
+## Esses são apenas alguns exemplos, existem outros métodos disponíveis no Pandas para salvar arquivos em diferentes formatos. 
+# Caso queira conhecê-los, acesse a documentação: 'https://pandas.pydata.org/docs/user_guide/io.html#io-tools-text-csv-hdf5'
+
+############################
+
+
+### 1. Exportação para CSV (.to_csv());
+
+## 'index': especifica se o índice do DataFrame deve ser salvo como uma coluna no arquivo (True por padrão).
+# Definir index=False evita a criação da coluna extra 'Unnamed: 0' ao ler o arquivo novamente.
+
+## 'sep': define o caractere utilizado como separador de colunas (a vírgula ',' é o padrão; ';' é muito comum no Brasil).
+
+# Exemplo 1: Salvando em CSV sem a coluna de índices e com ponto e vírgula como separador
+df.to_csv('dados_apartamentos.csv', index=False, sep=';')
+
+# Exemplo 2: Leitura para validação da exportação do CSV
+dados_csv = pd.read_csv('dados_apartamentos.csv', sep=';')
+
+
+############################
+
+
+### 2. Exportação para Excel (.to_excel());
+
+## 'index': define se os índices das linhas serão mantidos na planilha (True por padrão; index=False remove).
+## 'sheet_name': define o nome da aba/folha dentro do arquivo do Excel onde os dados serão salvos.
+
+# Exemplo 1: Salvando o DataFrame em um arquivo Excel (.xlsx) definindo o nome da aba e sem índices
+df.to_excel('dados_apartamentos.xlsx', index=False, sheet_name='Apartamentos')
+
+# Exemplo 2: Leitura para validação da exportação do Excel
+dados_excel = pd.read_excel('dados_apartamentos.xlsx', sheet_name='Apartamentos')
+
+
+############################
+
+
+### 3. Exportação para JSON (.to_json());
+
+## 'orient': define a estrutura/formato da representação do JSON (ex: 'records', 'index', 'columns', 'values').
+# O formato orient='records' salva os dados como uma lista de dicionários/objetos, ideal para APIs e web.
+
+# Exemplo 1: Salvando o DataFrame no formato JSON organizado por registros (lista de dicionários)
+df.to_json('dados_apartamentos.json', orient='records', indent=4)
+
+# Exemplo 2: Leitura para validação da exportação do JSON
+dados_json = pd.read_json('dados_apartamentos.json')
+
+
+############################
+
+
+### 4. Exportação para HTML (.to_html());
+
+## 'index': define se os índices serão exibidos na tabela HTML (index=False remove a primeira coluna de índice).
+# Retorna ou salva o código em formato de tags HTML (<table>...</table>), muito útil para relatórios e dashboards web.
+
+# Exemplo 1: Exportando o DataFrame diretamente para um arquivo de página HTML
+df.to_html('dados_apartamentos.html', index=False)
+
+# Exemplo 2: Leitura para validação da exportação do HTML (retorna uma lista de DataFrames)
+dados_html = pd.read_html('dados_apartamentos.html')[0]
+
+
+############################
+
+
+### 5. Exportação para Banco de Dados SQL (.to_sql());
+
+## 'name': nome da tabela que será criada ou atualizada no banco de dados.
+## 'con': objeto de conexão com o banco de dados (criado via SQLAlchemy ou conexão ativa).
+## 'if_exists': define a ação caso a tabela já exista no banco ('fail', 'replace' para sobrescrever, 'append' para inserir no final).
+## 'index': especifica se o índice do DataFrame deve ser gravado como uma coluna no banco de dados (index=False ignora).
+
+# Exemplo 1: Gravando o DataFrame em uma tabela SQL (substituindo a tabela caso já exista)
+# df.to_sql(name='tabela_apartamentos', con=conexao_engine, if_exists='replace', index=False)
+
+# Exemplo 2: Leitura para validação da exportação do banco SQL
+# dados_sql = pd.read_sql('SELECT * FROM tabela_apartamentos', con=conexao_engine)
+
+
+
+#################################################################################################
+
+
+
+### Criação de novas colunas numéricas e operações aritméticas entre colunas (Operações Vetorizadas);
+
+## No Pandas, é possível criar novas colunas realizando operações aritméticas (soma '+', subtração '-', multiplicação '*', divisão '/') diretamente entre colunas existentes ou valores escalares (números fixos).
+# A operação é executada linha por linha de forma vetorizada (otimizada). 
+
+## Para criar uma nova coluna, basta atribuir o resultado da operação a um novo nome de coluna entre colchetes no DataFrame: df['Coluna_Nova'] = operação
+
+## ATENÇÃO COM DADOS NULOS (NaN): Operações aritméticas envolvendo valores nulos (NaN) resultam em NaN no resultado final. Por isso, é fundamental tratar os nulos (ex: com .fillna(0, inplace=True)) antes de realizar cálculos entre colunas.
+
+
+# Exemplo 1: Criando a coluna 'Valor_por_mes' somando os valores mensais de aluguel e condomínio
+df['Valor_por_mes'] = df['Valor'] + df['Condominio']
+
+
+# Exemplo 2: Criando a coluna 'Valor_por_ano' multiplicando os gastos mensais por 12 e somando o IPTU anual
+df['Valor_por_ano'] = df['Valor_por_mes'] * 12 + df['IPTU']
+
+
+
+#################################################################################################
+
+
+
+### Criação de colunas categóricas de texto (Strings) e concatenação (.astype(str));
+
+## No Pandas, o operador de soma '+' aplicado a colunas do tipo texto (string / object) realiza a concatenação (junção) dos textos linha por linha.
+# Podemos intercalar colunas textuais com textos fixos inseridos entre aspas (ex: ' em ', ' com ') para formatar a mensagem desejada.
+
+## CONVERSÃO DE TIPOS OBRIGATÓRIA (.astype(str)): O Pandas gera erro (TypeError) ao tentar concatenar colunas numéricas (int, float) diretamente com texto. 
+# Para evitar o erro, é necessário converter previamente as colunas numéricas em texto utilizando o método .astype(str).
+
+## QUEBRA DE LINHA NO CÓDIGO ('\'): A barra invertida '\' permite quebrar comandos longos do Python em múltiplas linhas no editor sem interromper a execução do código.
+
+
+# Exemplo 1: Concatenando colunas de texto com textos fixos de espaçamento
+df['Descricao_Simples'] = df['Tipo'] + ' em ' + df['Bairro']
+
+
+# Exemplo 2: Criando coluna descritiva completa convertendo colunas numéricas ('Quartos' e 'Vagas') em string com .astype(str)
+df['Descricao'] = df['Tipo'] + ' em ' + df['Bairro'] + ' com ' + \
+                  df['Quartos'].astype(str) + ' quarto(s) ' + \
+                  'e ' + df['Vagas'].astype(str) + ' vaga(s) de garagem.'
+# O resultado final da coluna 'Descricao' será uma frase completa descrevendo o imóvel, como por exemplo: "Apartamento em Centro com 2 quarto(s) e 1 vaga(s) de garagem."
+
+
+
+#################################################################################################
+
+
+
+### Criação de colunas condicionais (.apply() e função lambda);
+
+## .apply() = método utilizado para aplicar uma função (personalizada ou pré-existente) ao longo de um eixo de um DataFrame ou Series (linha por linha ou coluna por coluna).
+
+## Função Lambda (lambda x: ...) = função anônima e rápida escrita em uma única linha, onde 'x' representa individualmente cada valor contido na coluna selecionada.
+# É ideal para aplicar regras condicionais no formato ternário (if/else em uma linha): "valor_se_true" if condição else "valor_se_false".
+
+
+# Exemplo 1: Criando a coluna binária 'Possui_suite' retornando 'Sim' para mais de 0 suítes e 'Não' caso contrário
+df['Possui_suite'] = df['Suites'].apply(lambda x: 'Sim' if x > 0 else 'Não')
+
+
+# Exemplo 2: Criando a coluna categórica 'Categoria_Valor' aplicando condição de limite de preço
+df['Categoria_Valor'] = df['Valor'].apply(lambda x: 'Alto' if x >= 5000 else 'Padrão')
+
+
+
+#################################################################################################
+
+
+
+### Resumo: Principais métodos para criação de novas colunas no Pandas;
+
+## O Pandas oferece diferentes formas de criar e derivar novas colunas em um DataFrame:
+
+
+# 1. Atribuição direta de valores (lista, array ou valor constante):
+# Atribui diretamente uma sequência de dados ou um valor único a um novo nome de coluna.
+df['Coluna_Lista'] = [7, 8, 9]
+df['Coluna_Fixa'] = 0
+
+
+# 2. Operações diretas (vetorizadas) entre colunas existentes:
+# Combina colunas através de operações matemáticas ou concatenação de textos.
+df['Soma_AB'] = df['A'] + df['B']
+
+
+# 3. Método .assign():
+# Permite criar ou modificar uma ou mais colunas retornando um novo DataFrame (ideal para encadeamento de métodos / method chaining).
+df = df.assign(Multiplicacao_AB = df['A'] * df['B'])
+
+
+# 4. Método .apply() com função customizada / lambda:
+# Aplica transformações ou lógicas condicionais complexas elemento a elemento da coluna.
+df['Dobro_A'] = df['A'].apply(lambda x: x * 2)
+
+
+
+#################################################################################################
+
+
+
+### Referências e materiais para aprofundamento em Pandas;
+
+## 1. Documentação Oficial do Pandas (Pandas API Reference):
+# - Formato: Gratuito | Inglês | Código e Exemplos
+# - Descrição: A API oficial do Pandas fornece a documentação completa de todas as funções e métodos da biblioteca.
+#   É a fonte essencial para consultar parâmetros detalhados de manipulação de séries temporais, matrizes numéricas, DataFrames e Series.
+# - Link de acesso: https://pandas.pydata.org/docs/reference/index.html
+
+
+## 2. Livro "Python Para Análise de Dados" (Wes McKinney - Criador do Pandas):
+# - Formato: Pago | Português | Livro Físico / E-book
+# - Descrição: Guia prático escrito pelo próprio criador da biblioteca Pandas. Ensina passo a passo como carregar, limpar,
+#   transformar, processar e analisar dados utilizando Python, Pandas, NumPy e IPython em cenários do mundo real.
