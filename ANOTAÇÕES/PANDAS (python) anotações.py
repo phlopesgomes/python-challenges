@@ -510,22 +510,133 @@ df_percentual = df_percentual.rename(columns={'Tipo': 'Percentuais'}, inplace=Fa
 
 
 
-### Customização de gráficos (.plot()));
+### Customização de gráficos (.plot());
 
-## Parâmetros de customização do método .plot():
-# - kind='bar': gera um gráfico de barras verticais
-# - edgecolor: define a cor da linha de contorno/borda das barras
-# - xlabel: define o rótulo/texto exibido no eixo X
-# - ylabel: define o rótulo/texto exibido no eixo Y
+## Parâmetros de customização do método .plot() organizados por categoria:
 
-# Exemplo 1: Plotando gráfico de barras verticais verde com bordas pretas e rótulos nos eixos
+# 1. Tipos de Gráficos (parâmetro 'kind'):
+# - kind='bar': gera um gráfico de barras verticais (ideal para comparações categóricas)
+# - kind='barh': gera um gráfico de barras horizontais (ideal para muitas categorias ou nomes longos)
+# - kind='line': gera um gráfico de linhas (padrão; ideal para séries temporais e evolução)
+# - kind='pie': gera um gráfico de pizza / setor (ideal para proporções simples)
+# - kind='hist': gera um histograma (ideal para distribuição de frequências numéricas)
+# - kind='box': gera um gráfico Boxplot (ideal para identificar outliers e quartis)
+# - kind='scatter': gera um gráfico de dispersão (requer x='coluna' e y='coluna')
+# - kind='area': gera um gráfico de área preenchida
+
+
+# 2. Dimensões, Formato e Transparência:
+# - figsize: define o tamanho da figura (largura, altura) em polegadas, ex: (12, 6)
+# - alpha: define o nível de transparência das barras/linhas/preenchimentos (de 0.0 transparente a 1.0 opaco)
+
+
+# 3. Cores, Estilos e Bordas:
+# - color: define a cor principal do gráfico (aceita nome em inglês como 'blue', código HEX '#3399ff' ou lista de cores)
+# - colormap: aplica uma paleta de cores pronta do Matplotlib (ex: 'viridis', 'plasma', 'Blues', 'Set2')
+# - edgecolor: define a cor da linha de contorno/borda das barras ou marcadores
+# - linewidth / lw: define a espessura da linha do gráfico ou da borda das barras
+# - linestyle / ls: define o estilo da linha em gráficos de linha (ex: '-', '--', ':', '-.')
+# - marker: define o símbolo dos pontos de dados em gráficos de linha (ex: 'o', 's', '^', 'x')
+# - markersize: define o tamanho do símbolo marcador dos pontos
+
+
+# 4. Título Principal do Gráfico:
+# - title: define o texto do título principal do gráfico
+# - title_fontsize: define o tamanho da fonte do título em pontos (pt)
+# - title_fontweight: define o peso/espessura da fonte do título ('normal', 'bold', 'semibold', 'heavy')
+# - title_color: define a cor da fonte do título principal
+
+
+# 5. Rótulos dos Eixos (Eixo X e Eixo Y):
+# - xlabel / ylabel: define o texto de identificação exibido no eixo X e no eixo Y
+# - fontsize: define o tamanho da fonte dos rótulos dos ticks dos eixos X e Y
+# - rot: define a rotação dos rótulos dos marcadores nos eixos em graus (ex: 0, 45, 90)
+
+
+# 6. Escala e Limites dos Eixos (Ticks e Limits):
+# - xlim / ylim: define os limites mínimos e máximos dos eixos como uma tupla, ex: xlim=(0, 100)
+# - xticks / yticks: define a lista exata de valores/marcadores exibidos nos eixos, ex: yticks=[0, 20, 40, 60, 80, 100]
+
+
+# 7. Legenda do Gráfico:
+# - legend: ativa (True) ou oculta (False) a caixa de legenda do gráfico
+# - loc: define a posição da legenda no gráfico (ex: 'upper right', 'lower left', 'center', 'best')
+
+
+# 8. Grade de Fundo (Grid):
+# - grid: ativa (True) ou oculta (False) as linhas de grade no fundo do gráfico
+# - grid_color: define a cor das linhas da grade
+# - grid_linestyle: define o estilo de linha da grade (ex: '--', ':', '-')
+# - grid_linewidth: define a espessura da linha da grade
+
+
+# 9. Empilhamento e Histogramas (Agrupamentos avançados):
+# - stacked: quando True em gráficos de barras/área com múltiplas colunas, empilha as barras umas sobre as outras
+# - bins: especifica a quantidade de intervalos/faixas de valores em um histograma (kind='hist')
+# - autopct: em gráficos de pizza (kind='pie'), exibe as porcentagens fatiadas, ex: autopct='%1.1f%%'
+
+
+############################
+
+
+### Exemplos práticos de aplicação completa:
+
+
+# Exemplo 1: Gráfico de Barras Verticais customizado com limites de eixo, rotação e cores
 df_percentual_tipo = df['Tipo'].value_counts(normalize=True).to_frame().sort_values('proportion')
-df_percentual_tipo.plot(kind='bar', figsize=(14, 10), color='green', edgecolor='black', xlabel='Tipos', ylabel='Percentual');
 
-# Exemplo 2: Plotando gráfico de barras verticais azuis com bordas vermelhas para a coluna Bairro
-df_bairro = df['Bairro'].value_counts(normalize=True).head(5).to_frame()
-df_bairro.plot(kind='bar', figsize=(10, 5), color='blue', edgecolor='red', xlabel='Bairros', ylabel='Proporção');
+df_percentual_tipo.plot(
+    kind='bar',             # Define o tipo do gráfico como barras verticais
+    figsize=(14, 7),        # Define a largura (14) e altura (7) da figura
+    color='purple',         # Define a cor roxa para o preenchimento das barras
+    edgecolor='black',      # Define a borda preta em volta de cada barra
+    linewidth=1.2,          # Define a espessura da linha da borda das barras
+    alpha=0.85,             # Aplica leve transparência (85% de opacidade)
+    title='Proporção de Imóveis por Tipo', # Define o texto do título principal
+    xlabel='Tipos de Imóveis',             # Define o rótulo/nome do eixo X
+    ylabel='Percentual Relativo (%)',      # Define o rótulo/nome do eixo Y
+    rot=45,                 # Inclina os nomes das categorias no eixo X em 45 graus
+    fontsize=11,            # Define o tamanho da fonte dos marcadores dos eixos
+    ylim=(0, 0.6),          # Define a escala do eixo Y indo de 0 (0%) a 0.6 (60%)
+    grid=True,              # Exibe as linhas de grade no fundo do gráfico
+    legend=False            # Oculta a caixa de legenda para limpar o visual
+);
 
+
+# Exemplo 2: Gráfico de Barras Horizontais com personalização de grade e paleta de cores
+df_bairro = df['Bairro'].value_counts(normalize=True).head(10).to_frame()
+
+df_bairro.plot(
+    kind='barh',            # Define o tipo do gráfico como barras horizontais
+    figsize=(12, 6),        # Define a largura (12) e altura (6) da figura
+    colormap='viridis',     # Aplica a paleta degradê de cores 'viridis' nas barras
+    edgecolor='darkblue',   # Define a borda azul-escuro nas barras
+    title='Top 10 Bairros com Maior Volume de Imóveis', # Define o título do gráfico
+    xlabel='Proporção na Base', # Define o rótulo do eixo X (horizontal)
+    ylabel='Bairros',           # Define o rótulo do eixo Y (vertical)
+    fontsize=10,            # Define o tamanho da fonte das categorias
+    grid=True,              # Liga as linhas de grade de fundo
+    legend=False            # Oculta a legenda desnecessária para apenas 1 variável
+);
+
+
+# Exemplo 3: Gráfico de Linhas para Séries Temporais ou Evolução com Marcadores
+df_evolucao_aluguel = df.groupby('Quartos')[['Valor']].mean()
+
+df_evolucao_aluguel.plot(
+    kind='line',            # Define o tipo do gráfico como linha contínua
+    figsize=(10, 5),        # Define as dimensões da imagem
+    color='crimson',        # Define a cor vermelho-carmesim para a linha
+    linestyle='--',         # Define o estilo da linha como tracejada
+    linewidth=2,            # Define a espessura da linha principal
+    marker='o',             # Adiciona um marcador circular em cada ponto de dado
+    markersize=8,           # Define o tamanho do círculo marcador de pontos
+    title='Média de Valor de Aluguel por Quantidade de Quartos', # Título principal
+    xlabel='Quantidade de Quartos', # Rótulo identificador do eixo X
+    ylabel='Média do Valor (R$)',   # Rótulo identificador do eixo Y
+    grid=True,              # Ativa as linhas de grade no fundo
+    legend=True             # Mantém a legenda visível para identificar a série
+);
 
 
 #################################################################################################
