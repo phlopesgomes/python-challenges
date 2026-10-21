@@ -1,11 +1,15 @@
-### ALGORITMOS E ESTRUTURA DE DADOS (PYTHON);
+### ALGORITMOS E ESTRUTURA DE DADOS (PYTHON)
+
+
+### Operações básicas, entrada e saída de dados;
+
 
 # print serve para o usuário rodar o programa e ver o resultado
 # input serve para o usuário digitar algo no programa (terminal)
 
 # + serve para somar números
 # - serve para subtrair números
-# * serve para multiplicar números 
+# * serve para multiplicar números
 # / serve para dividir números (com vírgula, número decimal) (5 / 2 = 2.5)
 # // serve para dividir números inteiros (sem vírgula, arredondado para baixo) (5 // 2 = 2, porque 5 dividido por 2 é 2,5, arredondado para baixo é 2)
 # % serve para mostrar o resto da divisão entre dois números (5 % 2 = 1, porque 5 dividido por 2 é 2, com resto 1)
@@ -35,17 +39,20 @@ print("y =", y) # sempre digitar o que o usuário digita e o resultado
 
 name = input("Digite seu nome: ")
 print("Olá, " + name + ". Prazer em conhecê-lo!")
- 
+
 print("\nPressione Enter para finalizar o programa.")
 input()
 print("O FIM.")
- 
+
 x = int(input("Digite um número: ")) # O usuário digita 2
 print(x * "5")
 
+
 #################################################################################################
 
-## Operadores de comparação;
+
+### Operadores de comparação;
+
 
 # == igual a
 # != diferente de
@@ -59,7 +66,7 @@ print(x * "5")
 2 != 3 # True
 2 < 3 # True
 2 <= 3 # True
-2 > 3 # False 
+2 > 3 # False
 2 >= 3 # False
 2 < 2 # False
 2 <= 2 # True
@@ -70,8 +77,8 @@ print(var == 0)
 var = 1 # Atribuindo 1 a var
 print(var == 0)
 
-n = int(input("Digite um número: ")) 
-print(n >= 100) 
+n = int(input("Digite um número: "))
+print(n >= 100)
 
 # Criando variáveis booleanas
 the_weather_is_good = True
@@ -102,41 +109,45 @@ else:
     #Ler dois números
 number1 = int(input("Digite o primeiro número: "))
 number2 = int(input("Digite o segundo número: "))
- 
+
 # Escolha o número maior
 if number1 > number2:
     larger_number = number1
 else:
     larger_number = number2
- 
+
 # Imprimir o resultado
 print("O maior número é:", larger_number)
- 
+
+
 ############################
+
 
 # Leia três números
 number1 = int(input("Digite o primeiro número: "))
 number2 = int(input("Digite o segundo número: "))
 number3 = int(input("Digite o terceiro número: "))
- 
+
 # Assumimos temporariamente que o primeiro número é o maior deles.
 # Em breve verificaremos isso.
 largest_number = number1
- 
+
 # Nós verificamos se o segundo número é maior que o maior_número atual
 # e atualize o maior_número, se necessário.
 if number2 > largest_number:
     largest_number = number2
- 
+
 # Nós verificamos se o terceiro número é maior que o maior_número atual
 # e atualize o maior_número, se necessário.
 if number3 > largest_number:
     largest_number = number3
- 
+
 # Imprimir o resultado
 print("O maior número é:", largest_number)
 
+
 ############################
+
 
 # Usar "largest_number" para o maior número e "smallest_number" para o menor número
 smallest_number = number1
@@ -154,16 +165,25 @@ if number == -1:
 if number > largest_number:
     largest_number = number
 # Ir para a linha 02
- 
+
 # Também usar "max()" para o maior número e "min()" para o menor número
+
 
 #################################################################################################
 
-## Estruturas de controle de fluxo ("if", "elif", "else", "while", "for", "break", "continue");
+
+### Estruturas de controle de fluxo ("if", "elif", "else", "while", "for", "break", "continue");
+
 
 ## "if" = se
+
+
 ## "elif" = senão se
+
+
 ## "else" = senão
+
+
 name = input("Insira o nome da flor: ")
 if name == "Spathiphyllum":
     print("Sim - Spathiphyllum é a melhor planta de todos os tempos!")
@@ -176,9 +196,13 @@ else:
 
 user_number = int(input("Insira um número: "))
 
+
 ############################
 
+
 ## while = enquanto
+
+
 codigo_secreto = "chupacabra"
 palavra = ""  # só para inicializar
 
@@ -198,10 +222,16 @@ while True:
     else:
         print("Muito bem, trouxa! Você está livre agora.")
 
+
 ############################
 
+
 ## for = loop para uma quantidade específica de vezes (pode contar mais de um argumento)
+
+
 ## range = intervalo de números (começa do 0, vai até o número antes do final)
+
+
 for i in range(5):
     print("i é igual a", i)
 # range(5) = 0, 1, 2, 3, 4 (5 números, não inclui o 5)
@@ -221,10 +251,16 @@ for expo in range(16):
   print("2 à potência de", expo, "é", power)
   power *= 2
 
+
 ############################
 
+
 ## power significa potência
+
+
 ## expo significa expoente
+
+
 # *= significa "multiplicado por igual a" (power = power * 2)
 # /= significa "dividido por igual a" (power = power / 2)
 # += significa "mais igual a" (power = power + 2)
@@ -233,10 +269,16 @@ for expo in range(16):
 # //= significa "dividido inteiro por igual a" (power = power //
 # %= significa "resto da divisão por igual a" (power = power % 2)
 
+
 ############################
 
+
 ## break = sair do loop
+
+
 ## continue = pular para a próxima iteração do loop
+
+
 for i in range(1, 10):
     if i % 2 == 0:
         continue
@@ -248,7 +290,10 @@ for i in range(1, 10):
 # i % 2 == 1 também significa que i é ímpar
 # i % 2 != 1 também significa que i é par
 
+
 ## Usando o "while true" para criar um loop infinito
+
+
 codigo_secreto = "chupacabra"
 
 while True:  # loop infinito
@@ -259,13 +304,22 @@ while True:  # loop infinito
     else:
         print("Errado! Tente novamente.")
 
+
 #################################################################################################
 
-## Listas;
+
+### Listas;
+
 
 ## listas são coleções de itens (números, palavras, etc)
+
+
 ## listas são mutáveis (podem ser alteradas)
-## [n°] = acessar item na posição n (começa do 0) 
+
+
+## [n°] = acessar item na posição n (começa do 0)
+
+
     lista = [1, 2, 3]
     lista.append(4)
     print(lista) # imprime [1, 2, 3, 4]
@@ -277,20 +331,32 @@ while True:  # loop infinito
     print(len(lista)) # imprime 3 (número de itens na lista)
 # len() = comprimento da lista
 
+
 ############################
- 
+
+
 ## remove() = remover item da lista / del() = deletar item da lista
+
+
 ## "del hat_list[0] ="remove o primeiro item da lista
 
+
 ## .pop() = remover e retornar o último item da lista
+
+
 hat_list = [1, 2, 3, 4, 5]  # lista original
 hat_list[2] = int(input("Digite um número inteiro para substituir o do meio: ")) # índices começam em 0, então 2 é o terceiro item
 hat_list.pop()
 print("Comprimento da lista:", len(hat_list))
 print("Lista atual:", hat_list)
 
+
 ## append() = adicionar item no final da lista
+
+
 ## insert() = adicionar item em uma posição específica da lista
+
+
 numbers = [111, 7, 2, 1]
 
 print(len(numbers)) # Mostra o comprimento da lista (número de itens na lista)
@@ -308,7 +374,9 @@ numbers.insert (0, 222) # 0 é a posição, 222 é o número a ser inserido
 print(len (numbers)) # Agora o comprimento da lista é 6, porque adicionamos um número no início
 print(numbers)
 
+
 ############################
+
 
 # Usando "for" e "range()" no exemplo de "append()"";
 my_list = [] # Criando uma lista vazia.
@@ -318,17 +386,21 @@ for i in range(5):
 
 print (my_list)
 
+
 ############################
+
 
 # Usando "for" e "range()" no exemplo de "insert()";
 my_list = []  # Criando uma lista vazia.
- 
-for i in range(5): 
-    my_list.insert(0, i + 1) # Inserindo no início da lista.  
- 
+
+for i in range(5):
+    my_list.insert(0, i + 1) # Inserindo no início da lista.
+
 print(my_list) # A lista agora é [5, 4, 3, 2, 1]
 
+
 ############################
+
 
 # Você também pode trocar itens na lista de lugar
 my_list = [1, 2, 3, 4, 5]
@@ -336,17 +408,21 @@ print("Lista original:", my_list)
 my_list[0], my_list[4] = my_list[4], my_list[0]  # Troca o primeiro e o último item
 print("Lista após a troca:", my_list)
 
+
 ############################
+
 
 # Outro exemplo;
 my_list = [10, 1, 8, 3, 5]
- 
+
 my_list[0], my_list[4] = my_list[4], my_list[0] # Troca o primeiro e o último item
 my_list[1], my_list[3] = my_list[3], my_list[1] # Troca o segundo e o penúltimo item
- 
+
 print(my_list) # A lista agora é [5, 3, 8, 1, 10]
 
+
 ############################
+
 
 # Novo exemplo de lista (os Beatles);
 
@@ -380,38 +456,50 @@ print("Etapa 5:", beatles)
 
 print("O fabuloso", len(beatles)) # testando o tamanho da lista
 
+
 ############################
+
 
 # Agora colocando uma lista em ordem crescente
 my_list = [3, 2, 5, 4, 1]
 my_list.sort() # coloca a lista em ordem crescente
 print(my_list) # imprime [1, 2, 3, 4, 5]
 
+
 ############################
+
 
 # Exemplo de acordo com o curso;
 my_list = [8, 10, 6, 2, 4]  # Lista para ordenar
 swapped = True  # É um pouco falso, precisamos dele para entrar no loop while.
- 
+
 while swapped:
     swapped = False  # nenhuma troca até agora
     for i in range(len(my_list) - 1):
         if my_list[i] > my_list[i + 1]:
             swapped = True  # uma troca ocorreu!
             my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
- 
+
 print(my_list)
+
 
 ############################
 
+
 ## reverse() = inverte a ordem dos itens na lista
+
+
 my_list = [1, 2, 3, 4, 5]
 my_list.reverse() # inverte a ordem dos itens na lista
 print(my_list) # imprime [5, 4, 3, 2, 1]
 
+
 ############################
 
+
 ## fatiamento de listas (slicing)
+
+
 # a função [:] cria uma cópia rasa (shallow copy) da lista, ou seja, uma nova lista com os mesmos itens, mas em um local diferente na memória
 list_1 = [1]            # list_1 = [1]
 list_2 = list_1[:]      # list_2 = [1] (cópia)
@@ -425,7 +513,9 @@ print(my_list[:3])   # imprime [0, 1, 2] (do início ao índice 2)
 print(my_list[3:])   # imprime [3, 4, 5] (do índice 3 ao fim)
 print(my_list[:])    # imprime [0, 1, 2, 3, 4, 5] (cópia da lista inteira)
 
+
 ############################
+
 
 # "in" e "not in" = verificar se um item está ou não na lista ("in" está na lista, "not in" não está na lista)
 my_list = [0, 3, 12, 8, 2]
@@ -433,15 +523,22 @@ print(5 in my_list)
 print(5 not in my_list)
 print(12 in my_list)
 
+
 #################################################################################################
- 
-## Funções; 
+
+
+## Funções;
+
 
 ## função = quando você quer reutilizar um pedaço de código várias vezes, você define uma função e depois chama essa função quando precisar
+
+
 ## def() = define uma função
+
+
 def message(): # define a função "message", vale ressaltar que uma função deve ter parênteses e dois pontos no final
     print("Entre um valor: ")
- 
+
 print("Começamos aqui.")
 message() # aqui eu chamei a função "message", então ela vai imprimir "Entre um valor: "
 print("terminamos aqui.")
@@ -457,19 +554,22 @@ print("terminamos aqui.")
 
 def hello(name): # definindo uma função
     print("Olá,", name) # o corpo da função
- 
- 
+
+
 name = input("Entre um valor: ")
- 
+
 hello(name) # chamando a função
 
 # Ficará assim no terminal:
 # Entre um valor: (usuário digita algo, por exemplo: "Ana")
 # Olá, Ana
 
-############################
 
 ############################
+
+
+############################
+
 
 # pass = quando você quer definir uma função, mas ainda não tem código para colocar dentro dela, você pode usar "pass" para indicar que a função está vazia por enquanto;
 # Exemplo de função com "pass":
@@ -484,32 +584,36 @@ print("A função message foi definida, mas ainda não faz nada.")
 
 # parâmetros = valores que você passa para a função quando a chama
 def message(number): # "number" é um parâmetro da função "message"
-    print("Digite um número:", number) 
- 
+    print("Digite um número:", number)
+
 message(1) # chamando a função com o argumento 1, ou seja, "number" vai valer 1
 
 # Ficará assim no terminal:
-# Digite um número: 1 
+# Digite um número: 1
+
 
 ############################
+
 
 # Outro exemplo de função com parâmetros:
 def message(number):
     print("Digite um número:", number)
- 
+
 message(1)
 message(2)
 
 # Ficará assim no terminal:
 # Digite um número: 1
-# Digite um número: 2 
+# Digite um número: 2
+
 
 ############################
+
 
 # É possível ter uma variável com o mesmo nome do parâmetro da função?
 def message(number):
     print("Digite um número:", number)
- 
+
 number = 1234 # variável com o mesmo nome do parâmetro
 message(1)
 print(number)
@@ -519,40 +623,46 @@ print(number)
 # 1234
 # a variável "number" não interfere no parâmetro "number" da função
 
+
 ############################
+
 
 # Também podemos ter mais de um parâmetro na função
 def message(number1, number2): # dois parâmetros
     print("Número 1:", number1)
     print("Número 2:", number2)
 
-message(1, 2) # dois argumentos 
+message(1, 2) # dois argumentos
 
 # Ficará assim no terminal:
 # Número 1: 1
 # Número 2: 2
 
+
 ############################
+
 
 # Outro exemplo de função com mais de um parâmetro:
 def introduction(first_name, last_name):
     print("Olá meu nome é", first_name, last_name)
- 
+
 introduction("Luke", "Skywalker")
 introduction("Jesse", "Quick")
 introduction("Clark", "Kent")
- 
+
 # Ficará assim no terminal:
 # Olá meu nome é Luke Skywalker
 # Olá meu nome é Jesse Quick
 # Olá meu nome é Clark Kent
 
+
 ############################
+
 
 # Também podemos fazer assim;
 def introduction(first_name, last_name):
     print("Olá meu nome é", first_name, last_name)
- 
+
 introduction(first_name = "James", last_name = "Bond")
 introduction(last_name = "Skywalker", first_name = "Luke")
 
@@ -562,7 +672,9 @@ introduction(last_name = "Skywalker", first_name = "Luke")
 
 # Dessa forma, a ordem dos argumentos não importa quando usamos os nomes dos parâmetros
 
+
 ############################
+
 
 # A função "adding()" é utilizada para somar números
 def adding(a, b, c):
@@ -573,7 +685,9 @@ adding(1, 2, 3)
 # Ficará assim no terminal:
 # 1 + 2 + 3 = 6
 
+
 ############################
+
 
 # Também podemos fazer assim;
 def adding(a, b, c):
@@ -583,18 +697,22 @@ def adding(a, b, c):
 # Ficará assim no terminal:
 # 2 + 3 + 1 = 6 , porque a ordem dos argumentos não importa quando usamos os nomes dos parâmetros
 
+
 ############################
+
 
 # Podemos definir valores padrão para os parâmetros da função;
 def introduction(first_name, last_name="Smith"): # "last_name" tem valor padrão "Smith"
     print("Olá meu nome é", first_name, last_name)
 
-introduction("John") # só passamos o argumento para "first_name" 
+introduction("John") # só passamos o argumento para "first_name"
 
 # Ficará assim no terminal:
 # Olá meu nome é John Smith
 
+
 ############################
+
 
 # Outro exemplo de função com valor padrão:
 def introduction(first_name="Jane", last_name="Smith"): # ambos os parâmetros têm valores padrão
@@ -605,7 +723,9 @@ introduction() # não passamos nenhum argumento, então ambos os parâmetros usa
 # Ficará assim no terminal:
 # Olá meu nome é Jane Smith
 
+
 ############################
+
 
 # return = quando você quer que a função devolva um valor para quem a chamou, você usa o "return"
 # Exemplo de função com return:
@@ -614,10 +734,10 @@ def happy_new_year(wishes = True):
     print("Duas...")
     print("Uma...")
     if not wishes: # se "wishes" for False, sai da função
-        return 
- 
+        return
+
     print("Feliz Ano Novo!")
- 
+
 happy_new_year() # chama a função sem argumentos, então "wishes" vale True
 
 # Ficará assim no terminal:
@@ -626,7 +746,9 @@ happy_new_year() # chama a função sem argumentos, então "wishes" vale True
 # Uma...
 # Feliz Ano Novo!
 
+
 ############################
+
 
 # Agora usando com o argumento False;
 def happy_new_year(wishes = True):
@@ -634,8 +756,8 @@ def happy_new_year(wishes = True):
     print("Duas...")
     print("Uma...")
     if not wishes: # se "wishes" for False, sai da função
-        return 
- 
+        return
+
     print("Feliz Ano Novo!")
 
 happy_new_year(False) # chama a função com o argumento False, então "wishes" vale False
@@ -646,7 +768,9 @@ happy_new_year(False) # chama a função com o argumento False, então "wishes" 
 # Uma...
 # (não imprime "Feliz Ano Novo!" porque "wishes" é False e a função saiu antes disso)
 
+
 ############################
+
 
 # função return com expressão;
 def boring_function(): # define a função
@@ -659,7 +783,9 @@ print("A função boring_function retornou seu resultado. Isso é:", x)
 # Ficará assim no terminal:
 # A função boring_function retornou seu resultado. Isso é: 123
 
+
 ############################
+
 
 # valor "None";
 def boring_function(): # define a função
@@ -671,25 +797,29 @@ print("A função boring_function retornou seu resultado. Isso é:", x)
 # Ficará assim no terminal:
 # A função boring_function retornou seu resultado. Isso é: None
 
+
 ############################
+
 
 # Outro exemplo de função com return e valor None;
 def multiply(a, b):
     return a * b
- 
+
 print(multiply(3, 4)) # saídas: 12
- 
- 
+
+
 def multiply(a, b):
     return # não retorna nada, então retorna "None"
- 
+
 print(multiply(3, 4)) # saídas: None
- 
+
 # Ficará assim no terminal:
 # 12
 # None
 
+
 ############################
+
 
 # Outro exemplo de função com return e valor None;
 def is_int(data):
@@ -697,7 +827,7 @@ def is_int(data):
         return True
     elif type(data) == float: # se o tipo de "data" for float (número com vírgula)
         return False
- 
+
 print(is_int(5)) # chama a função com o argumento 5, que é inteiro, então retorna True
 print(is_int(5.0)) # chama a função com o argumento 5.0, que é float, então retorna False
 print(is_int("5")) # chama a função com o argumento "5", que é string, então retorna None
@@ -707,23 +837,27 @@ print(is_int("5")) # chama a função com o argumento "5", que é string, então
 # False
 # None
 
+
 ############################
+
 
 # Funções com listas;
 def strange_list_fun(n):
 	strange_list = [] # cria uma lista vazia, depois adiciona números nela
-	
+
 	for i in range(0, n): # de 0 até n-1
 		strange_list.insert(0, i) # insere o número i na posição 0 da lista (sempre no início)
-	
-	return strange_list 
+
+	return strange_list
 
 print(strange_list_fun(5)) # chama a função com o argumento 5, então a lista terá os números de 0 a 4, sempre inseridos no início da lista
 
 # Ficará assim no terminal:
 # [4, 3, 2, 1, 0] (a lista tem 5 números, de 0 a 4, mas como sempre inserimos no início, o 4 fica na frente)
 
+
 ############################
+
 
 # Exemplo de função com lista, definindo anos bissextos;
 def is_year_leap(year): # define a função com o parâmetro "year"
@@ -741,8 +875,8 @@ test_data = [1900, 2000, 2016, 1987] # anos para testar a função
 test_results = [False, True, True, False] # resultados esperados para os anos (1900 não é bissexto, 2000 é bissexto, 2016 é bissexto, 1987 não é bissexto)
 for i in range(len(test_data)): # para cada índice na lista de anos
     yr = test_data[i] # pega o ano na posição i da lista, que são 1900, 2000, 2016 e 1987 e armazena na variável "yr"
-    print(yr,"-> ",end="") # imprime o ano e a seta "-> ", sem pular linha (end="") 
-    
+    print(yr,"-> ",end="") # imprime o ano e a seta "-> ", sem pular linha (end="")
+
     result = is_year_leap(yr) # chama a função com o ano "yr" e armazena o resultado na variável "result"
     if result == test_results[i]: # se o resultado for igual ao esperado na lista "test_results"
         print("OK") # imprime "OK"
@@ -755,28 +889,34 @@ for i in range(len(test_data)): # para cada índice na lista de anos
 # 2016 -> OK               (porque 2016 é bissexto)
 # 1987 -> OK               (porque 1987 não é bissexto)
 
+
 ############################
+
 
 # Outro exemplo de função com lista;
 def even_num_lst(ran): # define a função com o parâmetro "ran"
     lst = [] # cria uma lista vazia
-    for num in range(ran): # para cada número de 0 até ran-1 
+    for num in range(ran): # para cada número de 0 até ran-1
         if num % 2 == 0: # se o número for par (divisível por 2)
             lst.append(num) # adiciona o número na lista
     return lst # retorna a lista com os números pares
- 
+
 print(even_num_lst(11)) # chama a função com o argumento 11, então a lista terá os números pares de 0 a 10
 
 # Ficará assim no terminal:
 # [0, 2, 4, 6, 8, 10]            (números pares de 0 a 10)
 
+
 #################################################################################################
 
-## Escopo de variáveis (local e global);
+
+### Escopo de variáveis (local e global);
+
+
 def my_function():
     var = 2 # variável local, só existe dentro da função
     print("Eu conheço aquela variável?", var) # imprime o valor da variável local, que é 2
- 
+
 var = 1 # variável global, existe fora da função, não tem relação com a variável local
 my_function() # chama a função, que imprime o valor da variável local
 print(var) # imprime o valor da variável global
@@ -785,7 +925,9 @@ print(var) # imprime o valor da variável global
 # Eu conheço aquela variável? 2
 # 1
 
+
 ############################
+
 
 # Usando "global" para modificar uma variável global dentro de uma função;
 def my_function():
@@ -801,7 +943,9 @@ print(var)
 # Eu conheço aquela variável? 2
 # 2               (agora a variável global foi modificada para 2 dentro da função)
 
+
 ############################
+
 
 # Mais um exemplo de escopo de variáveis, sem ativar o "global";
 def my_function(n): # define a função com o parâmetro "n"
@@ -819,55 +963,63 @@ print(var)
 # Eu tenho 2
 # 1               (a variável global "var" continua 1, porque a variável "n" é local e não modifica "var")
 
+
 ############################
+
 
 # Exemplos de escopos usando "global";
 a = 1
- 
- 
+
+
 def fun():
     global a
     a = 2
     print(a)
- 
- 
+
+
 fun() # chama a função antes de modificar a variável global "a" para 2
-a = 3 
+a = 3
 print(a)
- 
+
 # Ficará assim no terminal:
 # 2
 # 3               (a variável global "a" foi modificada para 2 dentro da função, depois foi modificada para 3 fora da função)
 
+
 ############################
+
 
 # Este próximo exemplo é parecido, mas não igual;
 a = 1
- 
- 
+
+
 def fun():
     global a
     a = 2
     print(a)
- 
- 
+
+
 a = 3
 fun() # chama a função, que modifica a variável global "a" para 2
 print(a)
- 
+
 # Ficará assim no terminal:
 # 2
 # 2              (a variável global "a" foi modificada para 2 dentro da função, depois a função foi chamada e imprimiu 2, depois imprimiu 2 novamente, porque "a" já era 2)
 
+
 #################################################################################################
 
-## Fatorial;
+
+### Fatorial;
+
+
 # fatorial de um número n é o produto de todos os inteiros positivos menores ou iguais a n, ele é representado por "n!"
 # Exemplo: 5! = 5 × 4 × 3 × 2 × 1 = 120
 
-# 0! = 1 
+# 0! = 1
 # 1! = 1
-# 2! = 1 * 2 
+# 2! = 1 * 2
 # 3! = 1 * 2 * 3
 # 4! = 1 * 2 * 3 * 4
 
@@ -877,13 +1029,13 @@ def factorial_function(n): # define a função "factorial_function" com o parâm
         return None
     if n < 2: # se n for 0 ou 1, o fatorial é 1
         return 1
- 
+
     product = 1 # inicializa a variável "product" com 1
     for i in range(2, n + 1): # para cada número de 2 até n (incluindo n)
         product *= i # multiplica "product" pelo número i (product = product * i)
     return product # retorna o valor de "product", que é o fatorial de n
- 
- 
+
+
 for n in range(1, 6): # testando a função com os números de 1 a 5
     print(n, factorial_function(n)) # chama a função com o argumento n, que vale de 1 a 5
 
@@ -894,7 +1046,9 @@ for n in range(1, 6): # testando a função com os números de 1 a 5
 # 4 24
 # 5 120
 
+
 ############################
+
 
 # Exemplo de função recursiva para calcular o fatorial de um número;
 def fatorial(n): # define a função "fatorial" com o parâmetro "n"
@@ -908,7 +1062,9 @@ print(fatorial(5)) # chama a função com o argumento 5, então calcula 5 * 4 * 
 # Ficará assim no terminal:
 # 120
 
+
 ############################
+
 
 # Fatorial em prática;
 def fatorial(n):
@@ -921,9 +1077,13 @@ print(fatorial(5)) # 120
 # ficará assim no terminal:
 # 120
 
+
 #################################################################################################
 
-## números de Fibonacci;
+
+### Números de Fibonacci;
+
+
 # a sequência de Fibonacci é uma sequência infinita de números inteiros, onde cada número é a soma dos dois anteriores
 # a sequência começa com 0 e 1, então os próximos números são 1,(1+1) 2,(1+2) 3,(2+3) 5,(3+5) 8,(5+8) 13,(8+13) 21,(13+21) 34, etc
 def fibonacci(n): # define a função "fibonacci" com o parâmetro "n"
@@ -949,7 +1109,9 @@ for i in range(10): # testando a função com os primeiros 10 números de Fibona
 # 21
 # 34
 
+
 ############################
+
 
 # Exemplo da função Fibonacci;
 def fib(n):
@@ -964,11 +1126,11 @@ def fib(n):
         the_sum = elem_1 + elem_2 # calcula o próximo número da sequência (a soma dos dois últimos números)
         elem_1, elem_2 = elem_2, the_sum # atualiza os dois últimos números (elem_1 recebe o valor de elem_2, e elem_2 recebe o valor de the_sum)
     return the_sum
- 
- 
+
+
 for n in range(1, 10):  # testando a função com os números de 1 a 9
     print(n, "->", fib(n)) # chama a função com o argumento n, que vale de 1 a 9
- 
+
 # Ficará assim no terminal:
 # 1 -> 1
 # 2 -> 1
@@ -980,7 +1142,9 @@ for n in range(1, 10):  # testando a função com os números de 1 a 9
 # 8 -> 21
 # 9 -> 34
 
+
 ############################
+
 
 # recursividade de cauda (tail recursion);
 # uma função é recursiva de cauda quando a chamada recursiva é a última operação realizada pela função (ela chama a si mesma como seu último ato)
@@ -1007,7 +1171,9 @@ for n in range(1, 10): # testando a função com os números de 1 a 9
 # 8 -> 21
 # 9 -> 34
 
+
 ############################
+
 
 # Outro exemplo de função recursiva para calcular o n-ésimo número de Fibonacci;
 def fib(n):
@@ -1016,7 +1182,7 @@ def fib(n):
     if n < 3:
         return 1
     return fib(n - 1) + fib(n - 2)
- 
+
 for n in range(1, 10):
     print(n, "->", fib(n))
 
@@ -1031,7 +1197,9 @@ for n in range(1, 10):
 # 8 -> 21
 # 9 -> 34
 
+
 ############################
+
 
 # Recursividade em prática;
 def contagem_regressiva(n):
@@ -1053,7 +1221,9 @@ contagem_regressiva(5)
 # 1
 # Fim!
 
+
 ############################
+
 
 # Recursivo
 
@@ -1064,7 +1234,9 @@ def fibonacci(n):
 
 print(fibonacci(6)) # 8 é o 6 valor calculado​
 
+
 ############################
+
 
 # Iterativo
 
@@ -1081,9 +1253,13 @@ print(fibonacci_iterativo(6)) # 8
 # ficará assim no terminal:
 # 8
 
+
 ############################
 
-# Tipos abstratos de dados (ADT - Abstract Data Types);
+
+### Tipos abstratos de dados (ADT - Abstract Data Types);
+
+
 class Data:  # define a classe "Data"
 
     def __init__(self):  # define o construtor da classe
@@ -1091,9 +1267,13 @@ class Data:  # define a classe "Data"
         self.mes = 0  # inicializa o atributo "mes" com 0
         self.ano = 0  # inicializa o atributo "ano" com 0
 
+
 ############################
 
-# Um Tipo Abstrato de Dados também pode possuir operações (funções);
+
+## Um Tipo Abstrato de Dados também pode possuir operações (funções);
+
+
 class Retangulo: # define a classe "Retangulo"
     def __init__(self): # definindo a função com parâmetro construtora da classe
         self.altura = 0 # inicializa o atributo "altura" com 0
@@ -1120,18 +1300,26 @@ print("Area = ",ret.area())
 # Perimetro =  30
 # Area =  50
 
+
 #################################################################################################
 
-# como instalar módulos (bibliotecas) no Python;
+
+### Como instalar módulos (bibliotecas) no Python;
+
+
 # pip install nome_do_módulo
 # instalar pandas;
 # escreva no terminal "pip install pandas" para instalar o módulo pandas
 import pandas as pd # importa o módulo pandas e o renomeia para "pd"
 
+
 #################################################################################################
 
-## Estruturas de dados de pilha (stack) e fila (queue);
-# Em termos de programação, colocar um item no topo da pilha é chamado de push e remover um item é chamado de pop 
+
+### Estruturas de dados de pilha (stack) e fila (queue);
+
+
+# Em termos de programação, colocar um item no topo da pilha é chamado de push e remover um item é chamado de pop
 stack = [] # cria uma lista vazia para representar a pilha
 
 # Push
@@ -1143,7 +1331,9 @@ print("Stack: ", stack)
 
 Stack: ['A', 'B', 'C'] # imprime a pilha
 
+
 ############################
+
 
 # As operações básicas que podemos fazer em uma pilha são:​
 # Push: Adiciona um novo elemento na pilha.​
@@ -1152,7 +1342,9 @@ Stack: ['A', 'B', 'C'] # imprime a pilha
 # isEmpty: Verifica se a pilha está vazia.​
 # Size: Encontra o número de elementos na pilha.
 
+
 ############################
+
 
 # Encontrar um elemento;
 topElement = stack[-1]
@@ -1167,7 +1359,9 @@ Pop: C
 
 print("Stack after Pop: ", stack)
 
+
 ############################
+
 
 # criando uma pilha usando uma classe;
 class Stack:
@@ -1221,9 +1415,13 @@ print(s.size())
 # False
 # 8.4
 
+
 #################################################################################################
 
-# Estruturas Dinâmicas em Python​;
+
+### Estruturas Dinâmicas em Python​;
+
+
 # List (lista): tamanho flexível, permite inserções e remoções.​
 # Dict (dicionário): armazenamento chave-valor.​
 # Classes personalizadas: permitem criar estruturas como listas encadeadas, árvores, etc.​
@@ -1269,9 +1467,12 @@ print(lista)
 # Ficará assim no terminal:
 # [10, 20]
 
+
 ############################
 
-# Lista Encadeada​
+
+## Lista Encadeada​
+
 
 class ListaEncadeada:
 
@@ -1307,7 +1508,9 @@ class ListaEncadeada:
 
 #################################################################################################
 
-## Exercício de fatorial;
+
+### Exercício de fatorial;
+
 
 # implementar fatorial recursivo com intereção.
 def fatorial(n):
@@ -1329,9 +1532,12 @@ print(fatorial_iterativo(5)) # 120
 # 120
 # 120
 
+
 #################################################################################################
 
-## Exercício de Fibonacci;
+
+### Exercício de Fibonacci;
+
 
 # Fibonacci recursivo com intereção com usuário
 def fibonacci(n):
@@ -1341,7 +1547,9 @@ def fibonacci(n):
 n = int(input("Digite um número para calcular o Fibonacci: "))
 print("Fibonacci:", fibonacci(n))
 
+
 ############################
+
 
 # Fibonacci iterativo com intereção com usuário
 def fibonacci_iterativo(n):
