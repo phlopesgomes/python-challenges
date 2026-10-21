@@ -48,7 +48,7 @@ Este repositório contém minhas anotações práticas, rotinas de código e exe
 .
 ├── ANOTAÇÕES/
 │   ├── PYTHON anotações.py           # Algoritmos, Lógica, Listas e POO
-│   ├── PANDAS (python) anotações.py  # Guia completo de manipulação com Pandas
+│   ├── PANDAS (python) anotações.py  # Guia de manipulação com Pandas
 │   └── MATRIZES LINEAR (python)...  # Álgebra Linear e Matrizes com NumPy e SymPy
 ├── .gitignore                        # Proteção de dados e exclusão de arquivos sensíveis
 └── README.md                         # Documentação oficial do repositório
