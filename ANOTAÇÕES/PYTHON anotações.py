@@ -4,6 +4,74 @@
 ### Operações básicas, entrada e saída de dados;
 
 
+#################################################################################################
+
+
+### Variáveis;
+
+## Podemos entender as variáveis como um nome que está associado a um valor. 
+# Se queremos acessar esse valor, dado ou informação, precisamos recorrer ao seu nome: a variável.
+
+# Exemplo: Armazenando a idade de um estudante e manipulando o valor
+idade = 5 # Criamos a variável 'idade' associada ao valor 5
+print(idade) # Exibe o valor armazenado na variável
+# Ficará assim no terminal:
+# 5
+
+# O valor de uma variável pode ser alterado ao longo do tempo:
+idade = 10
+print(idade)
+# Ficará assim no terminal:
+# 10
+
+# Passados mais alguns anos, o valor muda para 15:
+idade = 15
+print(idade)
+# Ficará assim no terminal:
+# 15
+
+# Outra forma de visualizar a variável sem o print() (funciona apenas na última linha da célula no Notebook):
+idade = 15
+idade
+# Ficará assim no terminal:
+# 15
+
+# Também podemos armazenar outros tipos de dados, como textos (strings) entre aspas simples:
+nome = 'Gabriel'
+nome
+# Ficará assim no terminal:
+# 'Gabriel'
+
+
+#################################################################################################
+
+
+### Regras importantes para a criação de nomes de variáveis;
+
+## Nomes que NÃO podemos definir para variáveis em Python:
+# - Nomes que começam com números (Exemplos inválidos: 10_notas, 2_nomes_casa)
+# - Palavras separadas por espaço (Exemplos inválidos: Nome escola, notas estudantes)
+# - Nomes de funções reservadas do Python (Exemplos inválidos: print, type)
+
+## Sensibilidade a maiúsculas e minúsculas (Case-Sensitive):
+# Letras maiúsculas e minúsculas geram variáveis completamente diferentes. 
+# A variável 'idade' é diferente de 'Idade', que por sua vez é diferente de 'IDADE'.
+
+idade = 1
+Idade = 2
+IDADE = 3
+_idade = 4
+_idade_ = 5
+
+print(idade, Idade, IDADE, _idade, _idade_)
+
+# Ficará assim no terminal:
+# 1 2 3 4 5
+
+
+#################################################################################################
+
+
 # print serve para o usuário rodar o programa e ver o resultado
 # input serve para o usuário digitar algo no programa (terminal)
 
