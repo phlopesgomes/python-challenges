@@ -72,6 +72,66 @@ print(idade, Idade, IDADE, _idade, _idade_)
 #################################################################################################
 
 
+### Tipos de dados básicos em Python;
+
+## O trabalho com Data Science envolve diversos tipos de dados. Os quatro tipos-base fundamentais são:
+# - int: armazena números inteiros (positivos, negativos ou zero). Ex: 3, 100, -5
+# - float: armazena números com ponto flutuante, ou seja, números reais ou com parte fracionária (usando ponto). Ex: 3.14, 100.0, -0.5
+# - str (string): armazena textos ou sequências de caracteres entre aspas simples ou duplas. Ex: "Olá!", 'Alura', "1234"
+# - bool (booleano): armazena valores lógicos verdadeiro ou falso (True e False, sempre com a primeira letra maiúscula).
+
+
+############################
+
+
+### Função type() = informa a classe/tipo de dado que a variável está referenciando;
+
+# Exemplo 1: Verificando tipo inteiro (int)
+i = 5
+type(i)
+# Ficará assim no terminal:
+# int
+
+# Exemplo 2: Verificando tipo float (ponto flutuante)
+f = 9.8
+type(f)
+# Ficará assim no terminal:
+# float
+
+# Exemplo 3: Verificando tipo string (texto)
+s = 'Mirla'
+type(s)
+# Ficará assim no terminal:
+# str
+
+# Exemplo 4: Verificando tipo booleano (lógico)
+b = True
+type(b)
+# Ficará assim no terminal:
+# bool
+
+
+############################
+
+
+### Exemplo prático: Ficha de um aluno;
+
+# Criando variáveis com diferentes tipos de dados para estruturar os dados de um aluno
+nome_aluno = 'Fabricio Daniel'     # Tipo str (string / texto)
+idade_aluno = 15                    # Tipo int (inteiro)
+media_aluno = 8.45                  # Tipo float (ponto flutuante)
+situacao_aprovado = True            # Tipo bool (booleano / lógico)
+
+# Imprimindo todos os valores na mesma linha separados por espaço
+print(nome_aluno, idade_aluno, media_aluno, situacao_aprovado)
+
+# Ficará assim no terminal:
+# Fabricio Daniel 15 8.45 True
+
+
+#################################################################################################
+
+
 # print serve para o usuário rodar o programa e ver o resultado
 # input serve para o usuário digitar algo no programa (terminal)
 
