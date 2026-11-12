@@ -1,6 +1,11 @@
-# Ignora pastas de treinos
+# Ignora pastas de treinos e projetos locais
 Pandas conhecendo a biblioteca - ALURA/
 TREINAMENTOS - COLAB (SOZINHO)/
+PROJETO - ESTATÍSTICAS DO BRASILEIRÃO/
+Python para Dados primeiros passos - Alura/
+
+# Repare que para ignorar uma pasta, você deve colocar a barra no final do nome da pasta.
+# Caso contrário, o Git irá ignorar apenas os arquivos que tiverem o mesmo nome da pasta, mas não a pasta em si.
 
 # Ignora imagens e ficheiros do sistema
 *.png
